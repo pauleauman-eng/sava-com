@@ -3,101 +3,604 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#102b3a">
+
+  <meta name="description"
+        content="SAVA.COM recovery guides and moderated visitor comments.">
+
   <title>SAVA.COM | Recovery Guides</title>
+
   <link rel="stylesheet" href="style.css">
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/dist/umd/supabase.min.js"
+    defer>
+  </script>
+
   <script src="script.js" defer></script>
+
+  <style>
+    /* Guides comments only */
+    .guide-comments-area {
+      background: var(--mint);
+    }
+
+    .guide-comments-heading {
+      margin-bottom: 24px;
+    }
+
+    .guide-comments-heading h2 {
+      margin-bottom: 10px;
+    }
+
+    .guide-comment-layout {
+      display: grid;
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+      gap: 25px;
+      align-items: start;
+    }
+
+    .guide-comment-panel {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      min-width: 0;
+    }
+
+    .guide-comment-panel h3 {
+      margin-bottom: 8px;
+    }
+
+    .guide-comment-form label {
+      display: block;
+      margin: 18px 0 8px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .guide-comment-form input,
+    .guide-comment-form textarea {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px 15px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: var(--navy);
+      font: inherit;
+    }
+
+    .guide-comment-form textarea {
+      resize: vertical;
+      min-height: 135px;
+    }
+
+    .guide-comment-form input:focus,
+    .guide-comment-form textarea:focus {
+      outline: 2px solid var(--teal);
+      outline-offset: 2px;
+    }
+
+    .guide-comment-form button {
+      margin-top: 20px;
+    }
+
+    .guide-comment-form button:disabled {
+      opacity: .65;
+      cursor: wait;
+    }
+
+    .guide-comments-note {
+      margin-top: 12px;
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    .guide-comment-entry {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      background: #ffffff;
+      margin-top: 15px;
+      overflow-wrap: anywhere;
+    }
+
+    .guide-comment-entry strong {
+      display: block;
+      color: var(--navy);
+    }
+
+    .guide-comment-entry time {
+      display: block;
+      margin-top: 4px;
+      font-size: .83rem;
+      color: var(--muted);
+    }
+
+    .guide-comment-entry p {
+      white-space: pre-wrap;
+      margin: 12px 0 0;
+    }
+
+    @media (max-width: 760px) {
+      .guide-comment-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .guide-comment-panel {
+        padding: 22px;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <a class="skip" href="#main">Skip to content</a>
 
-<a class="skip" href="#main">Skip to content</a>
+  <!-- MAIN NAVIGATION -->
+  <header>
+    <div class="container navrow">
+      <a class="logo" href="index.html">
+        SAVA<span>.COM</span>
+      </a>
 
-<header>
-  <div class="container navrow">
-    <a class="logo" href="index.html">SAVA<span>.COM</span></a>
-    <button class="menu" id="menuBtn"
-            aria-controls="navlinks" aria-expanded="false">☰ Menu</button>
+      <button
+        class="menu"
+        id="menuBtn"
+        type="button"
+        aria-controls="navlinks"
+        aria-expanded="false">
+        ☰ Menu
+      </button>
 
-    <nav class="navlinks" id="navlinks" aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="awareness.html">Awareness</a>
-      <a href="guides.html" aria-current="page">Guides</a>
-      <a href="tracker.html">Tracker</a>
-      <a href="quiz.html">Quiz</a>
-      <a href="motivation.html">Motivation</a>
-      <a href="support.html">Support</a>
-      <a href="about.html">About</a>
-    </nav>
-  </div>
-</header>
+      <nav
+        class="navlinks"
+        id="navlinks"
+        aria-label="Main navigation">
 
-<main id="main">
+        <a href="index.html">Home</a>
+        <a href="awareness.html">Awareness</a>
 
-  <section id="guides">
-    <div class="container">
+        <a href="guides.html"
+           aria-current="page">Guides</a>
 
-      <div class="section-head">
-        <span class="tag">Actionable guidance</span>
-        <h2>Recovery guides</h2>
-        <p>
-          Select a topic for practical, evidence-informed
-          strategies. Different people may need different
-          kinds of support.
-        </p>
+        <a href="tracker.html">Tracker</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="motivation.html">Motivation</a>
+        <a href="articles.html">Articles</a>
+        <a href="support.html">Support</a>
+        <a href="about.html">About</a>
+
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- EXISTING RECOVERY GUIDES -->
+    <section id="guides">
+      <div class="container">
+
+        <div class="section-head">
+          <span class="tag">Actionable guidance</span>
+
+          <h2>Recovery guides</h2>
+
+          <p>
+            Select a topic for practical,
+            evidence-informed strategies.
+            Different people may need different
+            kinds of support.
+          </p>
+        </div>
+
+        <div
+          class="tabs"
+          role="tablist"
+          aria-label="Recovery guide topics">
+
+          <button
+            class="tab"
+            type="button"
+            id="tab-smoking"
+            role="tab"
+            aria-controls="guide-panel"
+            aria-selected="true"
+            data-guide="smoking">
+            Smoking
+          </button>
+
+          <button
+            class="tab"
+            type="button"
+            id="tab-vaping"
+            role="tab"
+            aria-controls="guide-panel"
+            aria-selected="false"
+            data-guide="vaping">
+            Vaping
+          </button>
+
+          <button
+            class="tab"
+            type="button"
+            id="tab-alcohol"
+            role="tab"
+            aria-controls="guide-panel"
+            aria-selected="false"
+            data-guide="alcohol">
+            Alcohol
+          </button>
+        </div>
+
+        <article
+          class="guide"
+          id="guide-panel"
+          role="tabpanel"
+          aria-labelledby="tab-smoking"
+          tabindex="0">
+        </article>
+
+      </div>
+    </section>
+
+    <!-- NEW: GUIDES COMMENT SECTION -->
+    <section
+      id="guide-comments"
+      class="guide-comments-area">
+
+      <div class="container">
+
+        <div class="guide-comments-heading">
+          <span class="tag">Community Discussion</span>
+
+          <h2>Share Your Thoughts</h2>
+
+          <p>
+            Do you have a question, suggestion,
+            or encouraging message about our
+            recovery guides?
+
+            Share your thoughts with the
+            SAVA.COM community.
+          </p>
+        </div>
+
+        <div class="guide-comment-layout">
+
+          <!-- COMMENT FORM -->
+          <div class="guide-comment-panel">
+            <h3>Leave a Comment</h3>
+
+            <p class="muted">
+              No account or registration is required.
+            </p>
+
+            <form
+              id="guideCommentForm"
+              class="guide-comment-form">
+
+              <label for="guideVisitorName">
+                Your Name
+              </label>
+
+              <input
+                type="text"
+                id="guideVisitorName"
+                placeholder="Enter your name"
+                autocomplete="name"
+                minlength="2"
+                maxlength="50"
+                required>
+
+              <label for="guideCommentText">
+                Your Comment
+              </label>
+
+              <textarea
+                id="guideCommentText"
+                placeholder="Write your comment here..."
+                minlength="2"
+                maxlength="1000"
+                rows="5"
+                required></textarea>
+
+              <button
+                type="submit"
+                class="btn primary"
+                id="submitGuideComment">
+                Submit Comment
+              </button>
+
+              <p
+                id="guideCommentStatus"
+                class="status"
+                role="status"
+                aria-live="polite">
+              </p>
+
+              <p class="guide-comments-note">
+                Comments are reviewed by an
+                administrator before appearing publicly.
+              </p>
+            </form>
+          </div>
+
+          <!-- APPROVED COMMENTS -->
+          <div class="guide-comment-panel">
+            <h3>Community Comments</h3>
+
+            <p class="muted">
+              Read approved messages from visitors.
+            </p>
+
+            <div
+              id="guideCommentsList"
+              aria-live="polite">
+              Loading comments...
+            </div>
+
+            <button
+              type="button"
+              class="btn outline"
+              id="refreshGuideComments"
+              style="margin-top:20px;">
+              ↻ Refresh Comments
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footerrow">
+      <div>
+        <strong>SAVA.COM</strong>
+        — Choose health. Choose hope.
+
+        <div>
+          © <span id="year"></span>
+          SAVA Student Project
+        </div>
       </div>
 
-      <div class="tabs" role="tablist" aria-label="Recovery guide topics">
-
-        <button class="tab" type="button"
-                id="tab-smoking" role="tab"
-                aria-controls="guide-panel"
-                aria-selected="true"
-                data-guide="smoking">
-          Smoking
-        </button>
-
-        <button class="tab" type="button"
-                id="tab-vaping" role="tab"
-                aria-controls="guide-panel"
-                aria-selected="false"
-                data-guide="vaping">
-          Vaping
-        </button>
-
-        <button class="tab" type="button"
-                id="tab-alcohol" role="tab"
-                aria-controls="guide-panel"
-                aria-selected="false"
-                data-guide="alcohol">
-          Alcohol
-        </button>
-
+      <div>
+        <a href="index.html">Back to home ↑</a>
+        <div>Made for awareness and education.</div>
       </div>
-
-      <article class="guide" id="guide-panel"
-               role="tabpanel"
-               aria-labelledby="tab-smoking"
-               tabindex="0">
-      </article>
-
     </div>
-  </section>
+  </footer>
 
-</main>
+  <!-- GUIDES COMMENT FUNCTIONALITY -->
+  <script>
+    (() => {
+      "use strict";
 
-<footer>
-  <div class="container footerrow">
-    <div>
-      <strong>SAVA.COM</strong> — Choose health. Choose hope.
-      <div>© <span id="year"></span> SAVA Student Project</div>
-    </div>
-    <div>
-      <a href="index.html">Back to home ↑</a>
-      <div>Made for awareness and education.</div>
-    </div>
-  </div>
-</footer>
+      const $guide = id =>
+        document.getElementById(id);
+
+      let guidesCommentClient = null;
+
+      function guideMessage(message) {
+        $guide("guideCommentStatus").textContent =
+          message;
+      }
+
+      function guideCommentError(error) {
+        return error?.message ||
+          "An unexpected error occurred.";
+      }
+
+      function initializeGuidesCommentClient() {
+        if (
+          typeof window.supabase?.createClient
+          !== "function"
+        ) {
+          guideMessage(
+            "Unable to load the comments service."
+          );
+          return false;
+        }
+
+        if (
+          typeof SAVA_SUPABASE_URL !== "string" ||
+          typeof SAVA_PUBLISHABLE_KEY !== "string"
+        ) {
+          guideMessage(
+            "Supabase configuration is unavailable."
+          );
+          return false;
+        }
+
+        if (!guidesCommentClient) {
+          guidesCommentClient =
+            window.supabase.createClient(
+              SAVA_SUPABASE_URL,
+              SAVA_PUBLISHABLE_KEY
+            );
+        }
+
+        return true;
+      }
+
+      function createGuideCommentElement(comment) {
+        const item =
+          document.createElement("article");
+
+        item.className = "guide-comment-entry";
+
+        const name =
+          document.createElement("strong");
+
+        name.textContent = comment.visitor_name;
+
+        const date =
+          document.createElement("time");
+
+        date.dateTime = comment.created_at;
+
+        const parsedDate =
+          new Date(comment.created_at);
+
+        date.textContent =
+          Number.isNaN(parsedDate.getTime())
+            ? ""
+            : parsedDate.toLocaleDateString(
+                "en-PH",
+                {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric"
+                }
+              );
+
+        const message =
+          document.createElement("p");
+
+        // Prevent visitor-provided HTML execution.
+        message.textContent = comment.comment_text;
+
+        item.append(name, date, message);
+
+        return item;
+      }
+
+      async function loadGuidesComments() {
+        const container =
+          $guide("guideCommentsList");
+
+        if (!initializeGuidesCommentClient()) {
+          container.textContent =
+            "Comments are temporarily unavailable.";
+          return;
+        }
+
+        container.textContent =
+          "Loading comments...";
+
+        const { data, error } =
+          await guidesCommentClient
+            .from("sava_guide_comments")
+            .select(
+              "visitor_name,comment_text,created_at"
+            )
+            .eq("approved", true)
+            .order("created_at", {
+              ascending: false
+            });
+
+        container.replaceChildren();
+
+        if (error) {
+          container.textContent =
+            "Unable to load comments: " +
+            guideCommentError(error);
+          return;
+        }
+
+        if (!data?.length) {
+          container.textContent =
+            "No approved comments yet. " +
+            "Be the first to share your thoughts!";
+          return;
+        }
+
+        data.forEach(comment => {
+          container.append(
+            createGuideCommentElement(comment)
+          );
+        });
+      }
+
+      async function submitGuidesComment(event) {
+        event.preventDefault();
+
+        if (!initializeGuidesCommentClient()) {
+          return;
+        }
+
+        const name =
+          $guide("guideVisitorName").value.trim();
+
+        const message =
+          $guide("guideCommentText").value.trim();
+
+        if (
+          name.length < 2 ||
+          name.length > 50 ||
+          message.length < 2 ||
+          message.length > 1000
+        ) {
+          guideMessage(
+            "Please enter a valid name and comment."
+          );
+          return;
+        }
+
+        const button =
+          $guide("submitGuideComment");
+
+        button.disabled = true;
+
+        guideMessage("Submitting comment...");
+
+        try {
+          const { error } =
+            await guidesCommentClient
+              .from("sava_guide_comments")
+              .insert({
+                visitor_name: name,
+                comment_text: message
+              });
+
+          if (error) throw error;
+
+          $guide("guideCommentForm").reset();
+
+          guideMessage(
+            "Comment submitted successfully! " +
+            "It will appear after administrator approval."
+          );
+
+        } catch (error) {
+          guideMessage(
+            "Submission failed: " +
+            guideCommentError(error)
+          );
+        } finally {
+          button.disabled = false;
+        }
+      }
+
+      document.addEventListener(
+        "DOMContentLoaded",
+        () => {
+          $guide("guideCommentForm")
+            .addEventListener(
+              "submit",
+              submitGuidesComment
+            );
+
+          $guide("refreshGuideComments")
+            .addEventListener(
+              "click",
+              loadGuidesComments
+            );
+
+          loadGuidesComments();
+        }
+      );
+    })();
+  </script>
 
 </body>
 </html>

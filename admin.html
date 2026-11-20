@@ -8,6 +8,7 @@
   <meta name="theme-color" content="#102b3a">
   <meta name="description"
         content="SAVA.COM Administration Dashboard">
+
   <title>Admin Dashboard | SAVA.COM</title>
 
   <link rel="stylesheet" href="style.css">
@@ -17,12 +18,233 @@
     defer>
   </script>
   <script src="script.js" defer></script>
+
+  <style>
+    /* =========================================
+       GUIDES MODERATION — EXISTING FEATURE
+       ========================================= */
+
+    .guide-moderation-block {
+      margin-top: 25px;
+    }
+
+    .guide-moderation-record {
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: #fff;
+      margin-top: 14px;
+      overflow-wrap: anywhere;
+    }
+
+    .guide-moderation-record h3 {
+      margin: 0 0 8px;
+      color: var(--navy);
+    }
+
+    .guide-moderation-record p {
+      white-space: pre-wrap;
+      margin: 10px 0;
+    }
+
+    .guide-moderation-meta {
+      font-size: .86rem;
+      color: var(--muted);
+    }
+
+    .guide-moderation-actions,
+    .motivation-admin-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .guide-moderation-actions button {
+      padding: 10px 16px;
+      font: inherit;
+      font-weight: 700;
+      border: 1px solid var(--teal);
+      border-radius: 9px;
+      background: #fff;
+      color: var(--teal-dark);
+      cursor: pointer;
+    }
+
+    .guide-moderation-actions button:hover {
+      background: var(--mint);
+    }
+
+    .guide-moderation-actions .guide-delete-button {
+      border-color: #b44343;
+      color: #a12d2d;
+    }
+
+    /* =========================================
+       NEW — MOTIVATION MANAGER
+       ========================================= */
+
+    .motivation-admin-layout {
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .motivation-admin-field {
+      margin-bottom: 20px;
+    }
+
+    .motivation-admin-field label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .motivation-admin-field input:not([type="checkbox"]),
+    .motivation-admin-field textarea,
+    .motivation-admin-field select {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px 15px;
+      font: inherit;
+      color: var(--navy);
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .motivation-admin-field textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .motivation-admin-field input:focus-visible,
+    .motivation-admin-field textarea:focus-visible,
+    .motivation-admin-field select:focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 2px;
+    }
+
+    .motivation-admin-help {
+      color: var(--muted);
+      font-size: .88rem;
+      margin-top: 8px;
+    }
+
+    .motivation-admin-preview {
+      max-width: 100%;
+      max-height: 240px;
+      object-fit: contain;
+      display: block;
+      margin-top: 12px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--mint);
+    }
+
+    .motivation-admin-preview.hidden {
+      display: none;
+    }
+
+    .motivation-admin-record {
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 14px;
+      padding: 18px;
+      margin-top: 14px;
+      overflow-wrap: anywhere;
+    }
+
+    .motivation-admin-record h3 {
+      margin: 8px 0;
+      color: var(--navy);
+    }
+
+    .motivation-admin-record p {
+      white-space: pre-wrap;
+      margin: 8px 0;
+    }
+
+    .motivation-admin-record img {
+      max-width: 100%;
+      max-height: 180px;
+      object-fit: contain;
+      display: block;
+      margin: 12px 0;
+      border-radius: 10px;
+      background: var(--mint);
+    }
+
+    .motivation-admin-type {
+      display: inline-block;
+      border-radius: 99px;
+      background: var(--mint);
+      padding: 5px 10px;
+      font-size: .75rem;
+      font-weight: 800;
+      color: var(--teal-dark);
+    }
+
+    .motivation-admin-record .btn {
+      margin: 0;
+    }
+
+    .motivation-admin-record .danger-button {
+      padding: 10px 16px;
+      border-radius: 9px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid #b44343;
+      color: #a12d2d;
+      background: #fff;
+    }
+
+    .motivation-admin-record button:disabled {
+      opacity: .55;
+      cursor: wait;
+    }
+
+    .motivation-admin-status-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 12px 0;
+      flex-wrap: wrap;
+    }
+
+    .motivation-admin-check {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+    }
+
+    .motivation-admin-check input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--teal);
+    }
+
+    @media (max-width: 900px) {
+      .motivation-admin-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body class="admin-page">
   <a class="skip" href="#main">Skip to content</a>
 
-  <!-- ADMIN LOGIN -->
+  <!-- =========================================
+       ADMIN LOGIN
+       ========================================= -->
+
   <section id="adminLogin" class="admin-login">
     <div class="container">
       <div class="card admin-login-card">
@@ -37,13 +259,16 @@
 
         <span class="tag">Administrator Access</span>
         <h1>Welcome Back</h1>
+
         <p class="muted">
-          Sign in to manage articles, publications,
-          and visitor comments.
+          Sign in to manage articles, motivation
+          posts, and visitor comments.
         </p>
 
         <form id="adminLoginForm">
-          <label for="adminEmail">Email Address</label>
+          <label for="adminEmail">
+            Email Address
+          </label>
           <input
             type="email"
             id="adminEmail"
@@ -51,7 +276,9 @@
             autocomplete="username"
             required>
 
-          <label for="adminPassword">Password</label>
+          <label for="adminPassword">
+            Password
+          </label>
           <input
             type="password"
             id="adminPassword"
@@ -74,14 +301,17 @@
           <a href="index.html">← Back to Website</a>
           <span>Authorized administrators only</span>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ADMIN WORKSPACE -->
+  <!-- =========================================
+       ADMIN WORKSPACE
+       ========================================= -->
+
   <div id="adminDashboard" class="admin-app hidden">
 
-    <!-- SIDEBAR -->
     <aside class="admin-sidebar">
 
       <a href="#dashboardHome"
@@ -94,7 +324,9 @@
         </div>
       </a>
 
-      <div class="admin-sidebar-label">MAIN MENU</div>
+      <div class="admin-sidebar-label">
+        MAIN MENU
+      </div>
 
       <nav class="admin-side-nav"
            aria-label="Administrator navigation">
@@ -121,6 +353,14 @@
           Manage Articles
         </a>
 
+        <!-- NEW MENU -->
+        <a href="#manage-motivation"
+           class="admin-nav-link"
+           id="manageMotivationNav">
+          <span class="admin-nav-icon">✦</span>
+          Manage Motivation
+        </a>
+
         <a href="#manage-comments"
            class="admin-nav-link"
            data-admin-page="manage-comments">
@@ -129,10 +369,13 @@
         </a>
       </nav>
 
-      <div class="admin-sidebar-label">WEBSITE</div>
+      <div class="admin-sidebar-label">
+        WEBSITE
+      </div>
 
       <nav class="admin-side-nav"
            aria-label="Public links">
+
         <a href="index.html"
            target="_blank"
            rel="noopener noreferrer"
@@ -168,7 +411,6 @@
       </div>
     </aside>
 
-    <!-- MAIN CONTENT -->
     <main id="main" class="admin-main">
 
       <div class="admin-topbar">
@@ -176,7 +418,9 @@
           <span class="admin-topbar-caption">
             SAVA.COM / Administration
           </span>
-          <strong id="adminCurrentPage">Dashboard</strong>
+          <strong id="adminCurrentPage">
+            Dashboard
+          </strong>
         </div>
 
         <div class="admin-topbar-actions">
@@ -186,6 +430,7 @@
              class="btn outline">
             View Articles ↗
           </a>
+
           <div class="admin-avatar"
                aria-label="Administrator">A</div>
         </div>
@@ -193,14 +438,19 @@
 
       <div class="admin-content">
 
-        <!-- PAGE 1: DASHBOARD -->
+        <!-- =====================================
+             DASHBOARD
+             ===================================== -->
+
         <section id="dashboardHome"
                  class="admin-section"
                  data-admin-panel>
 
           <div class="admin-page-heading">
             <div>
-              <span class="admin-overline">OVERVIEW</span>
+              <span class="admin-overline">
+                OVERVIEW
+              </span>
               <h1>Dashboard</h1>
               <p>
                 Your SAVA.COM content management overview.
@@ -214,13 +464,10 @@
             </a>
           </div>
 
-          <!-- LIVE STATISTICS -->
           <div class="admin-block-heading"
                style="margin-top:0">
             <h2>Content Statistics</h2>
-            <p>
-              Live counts from your Supabase database.
-            </p>
+            <p>Live counts from your Supabase database.</p>
           </div>
 
           <div class="admin-overview-grid">
@@ -260,7 +507,6 @@
               <p>Pending Comments</p>
               <strong>Awaiting review</strong>
             </div>
-
           </div>
 
           <div class="actions"
@@ -277,7 +523,6 @@
              role="status"
              aria-live="polite"></p>
 
-          <!-- WELCOME PANEL -->
           <div class="admin-welcome-panel">
             <div>
               <span class="admin-overline">
@@ -285,9 +530,10 @@
               </span>
               <h2>Keep SAVA.COM Informative</h2>
               <p>
-                Publish evidence-based educational articles,
-                credit their authors, and maintain respectful
-                discussions through comment moderation.
+                Publish evidence-based educational
+                articles, credit their authors,
+                and maintain respectful discussions
+                through comment moderation.
               </p>
 
               <div class="admin-welcome-actions">
@@ -296,6 +542,7 @@
                    class="btn primary">
                   Create New Article
                 </a>
+
                 <a href="#manage-comments"
                    data-admin-page="manage-comments"
                    class="btn outline">
@@ -308,7 +555,6 @@
                  aria-hidden="true">S</div>
           </div>
 
-          <!-- QUICK ACTIONS -->
           <div class="admin-block-heading">
             <h2>Quick Access</h2>
             <p>Choose a management tool.</p>
@@ -336,9 +582,13 @@
               <strong>→</strong>
             </a>
           </div>
+
         </section>
 
-        <!-- PAGE 2: CREATE / EDIT ARTICLE -->
+        <!-- =====================================
+             CREATE / EDIT ARTICLE
+             ===================================== -->
+
         <section id="create-article"
                  class="admin-section hidden"
                  data-admin-panel>
@@ -352,8 +602,8 @@
                 Create Article
               </h2>
               <p>
-                Write and publish educational content
-                for SAVA.COM visitors.
+                Write and publish educational
+                content for SAVA.COM visitors.
               </p>
             </div>
 
@@ -375,6 +625,7 @@
               </div>
 
               <form id="articleEditor">
+
                 <input type="hidden"
                        id="editArticleId">
 
@@ -382,27 +633,28 @@
                   <label for="articleTitle">
                     Article Title
                   </label>
-                  <input
-                    type="text"
-                    id="articleTitle"
-                    minlength="3"
-                    maxlength="180"
-                    placeholder="Enter article title"
-                    required>
+
+                  <input type="text"
+                         id="articleTitle"
+                         minlength="3"
+                         maxlength="180"
+                         placeholder="Enter article title"
+                         required>
                 </div>
 
                 <div class="admin-form-group">
                   <label for="articleAuthor">
                     Author Name
                   </label>
-                  <input
-                    type="text"
-                    id="articleAuthor"
-                    minlength="2"
-                    maxlength="100"
-                    placeholder="Full name of the author"
-                    autocomplete="off"
-                    required>
+
+                  <input type="text"
+                         id="articleAuthor"
+                         minlength="2"
+                         maxlength="100"
+                         placeholder="Full name of the author"
+                         autocomplete="off"
+                         required>
+
                   <p class="admin-field-help">
                     Displayed on the public article.
                   </p>
@@ -412,21 +664,21 @@
                   <label for="articleExcerpt">
                     Short Description
                   </label>
-                  <textarea
-                    id="articleExcerpt"
-                    rows="4"
-                    placeholder="Brief article summary..."></textarea>
+
+                  <textarea id="articleExcerpt"
+                            rows="4"
+                            placeholder="Brief article summary..."></textarea>
                 </div>
 
                 <div class="admin-form-group">
                   <label for="articleBody">
                     Article Content
                   </label>
-                  <textarea
-                    id="articleBody"
-                    rows="14"
-                    placeholder="Write your article..."
-                    required></textarea>
+
+                  <textarea id="articleBody"
+                            rows="14"
+                            placeholder="Write your article..."
+                            required></textarea>
                 </div>
 
                 <div class="admin-form-group">
@@ -440,23 +692,23 @@
                     <p>
                       JPEG, PNG, WebP — maximum 5 MB
                     </p>
-                    <input
-                      type="file"
-                      id="articleImage"
-                      accept="image/jpeg,image/png,image/webp">
+
+                    <input type="file"
+                           id="articleImage"
+                           accept="image/jpeg,image/png,image/webp">
                   </div>
 
-                  <img
-                    id="imagePreview"
-                    class="image-preview hidden"
-                    alt="Article cover image preview">
+                  <img id="imagePreview"
+                       class="image-preview hidden"
+                       alt="Article cover image preview">
                 </div>
 
                 <div class="admin-publish-box">
                   <div>
                     <strong>Publication Status</strong>
                     <p>
-                      Publish immediately or save as draft.
+                      Publish immediately or
+                      save as draft.
                     </p>
                   </div>
 
@@ -472,6 +724,7 @@
                           class="btn primary">
                     Save Article
                   </button>
+
                   <button type="button"
                           id="cancelEdit"
                           class="btn outline">
@@ -502,31 +755,30 @@
 
                 <div class="admin-help-step">
                   <span>03</span>
-                  <p>
-                    Add content and an optional cover image.
-                  </p>
+                  <p>Add content and an optional cover image.</p>
                 </div>
 
                 <div class="admin-help-step">
                   <span>04</span>
-                  <p>
-                    Publish or save the article as a draft.
-                  </p>
+                  <p>Publish or save the article as a draft.</p>
                 </div>
               </div>
 
               <div class="admin-help-notice">
                 <strong>Editorial Reminder</strong>
                 <p>
-                  Review health information for accuracy
-                  and credit original authors.
+                  Review health information for
+                  accuracy and credit original authors.
                 </p>
               </div>
             </aside>
           </div>
         </section>
 
-        <!-- PAGE 3: MANAGE ARTICLES -->
+        <!-- =====================================
+             MANAGE ARTICLES
+             ===================================== -->
+
         <section id="manage-articles"
                  class="admin-section hidden"
                  data-admin-panel>
@@ -555,6 +807,7 @@
                 <h3>Article Library</h3>
                 <p>Published articles and drafts.</p>
               </div>
+
               <span class="admin-panel-label">
                 SUPABASE
               </span>
@@ -568,7 +821,216 @@
           </div>
         </section>
 
-        <!-- PAGE 4: COMMENT MODERATION -->
+        <!-- =====================================
+             NEW: MANAGE MOTIVATION
+             ===================================== -->
+
+        <section id="manage-motivation"
+                 class="admin-section hidden"
+                 data-admin-panel>
+
+          <div class="admin-page-heading">
+            <div>
+              <span class="admin-overline">
+                MOTIVATION BILLBOARD
+              </span>
+
+              <h2>Manage Motivation</h2>
+
+              <p>
+                Create text or image motivations
+                for the rotating Motivation Billboard.
+              </p>
+            </div>
+
+            <a href="motivation.html"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn outline">
+              View Motivation Page ↗
+            </a>
+          </div>
+
+          <div class="motivation-admin-layout">
+
+            <!-- MOTIVATION EDITOR -->
+            <div class="admin-panel">
+
+              <div class="admin-panel-heading">
+                <div>
+                  <h3 id="motivationEditorHeading">
+                    Create Motivation
+                  </h3>
+                  <p>
+                    Enter the details of your post.
+                  </p>
+                </div>
+              </div>
+
+              <form id="motivationEditorForm">
+
+                <input type="hidden"
+                       id="motivationEditId">
+
+                <div class="motivation-admin-field">
+                  <label for="motivationTitle">
+                    Motivation Title
+                  </label>
+
+                  <input type="text"
+                         id="motivationTitle"
+                         minlength="2"
+                         maxlength="150"
+                         placeholder="Enter motivation title"
+                         required>
+                </div>
+
+                <div class="motivation-admin-field">
+                  <label for="motivationType">
+                    Content Type
+                  </label>
+
+                  <select id="motivationType" required>
+                    <option value="text">
+                      Text Motivation
+                    </option>
+                    <option value="image">
+                      Image Motivation
+                    </option>
+                  </select>
+                </div>
+
+                <div id="motivationTextFields"
+                     class="motivation-admin-field">
+
+                  <label for="motivationBody">
+                    Motivational Message
+                  </label>
+
+                  <textarea id="motivationBody"
+                            placeholder="Write your encouraging message..."
+                            maxlength="2000"></textarea>
+                </div>
+
+                <div id="motivationImageFields"
+                     class="motivation-admin-field hidden">
+
+                  <label for="motivationImage">
+                    Motivation Image
+                  </label>
+
+                  <input type="file"
+                         id="motivationImage"
+                         accept="image/jpeg,image/png,image/webp">
+
+                  <p class="motivation-admin-help">
+                    JPG, PNG, or WebP. Maximum 5 MB.
+                    Uploaded images will be stored in Supabase.
+                  </p>
+
+                  <img id="motivationImagePreview"
+                       class="motivation-admin-preview hidden"
+                       alt="Motivation image preview">
+                </div>
+
+                <div class="motivation-admin-field">
+                  <label for="motivationOrder">
+                    Display Order
+                  </label>
+
+                  <input type="number"
+                         id="motivationOrder"
+                         value="0"
+                         min="0"
+                         max="9999"
+                         step="1">
+
+                  <p class="motivation-admin-help">
+                    Lower numbers appear first in the billboard.
+                  </p>
+                </div>
+
+                <div class="admin-publish-box">
+                  <div>
+                    <strong>Publication Status</strong>
+                    <p>
+                      Published posts will appear on the
+                      public Motivation Billboard.
+                    </p>
+                  </div>
+
+                  <label class="motivation-admin-check">
+                    <input type="checkbox"
+                           id="motivationPublished">
+                    Publish
+                  </label>
+                </div>
+
+                <div class="admin-editor-actions">
+                  <button type="submit"
+                          class="btn primary"
+                          id="saveMotivationButton">
+                    Save Motivation
+                  </button>
+
+                  <button type="button"
+                          class="btn outline"
+                          id="clearMotivationButton">
+                    Clear Form
+                  </button>
+                </div>
+
+                <p id="motivationEditorStatus"
+                   class="status"
+                   role="status"
+                   aria-live="polite"></p>
+
+              </form>
+            </div>
+
+            <!-- MOTIVATION LIBRARY -->
+            <div class="admin-panel">
+
+              <div class="admin-panel-heading">
+                <div>
+                  <h3>Motivation Library</h3>
+                  <p>
+                    Manage published and draft posts.
+                  </p>
+                </div>
+                <span class="admin-panel-label">
+                  BILLBOARD
+                </span>
+              </div>
+
+              <div id="motivationAdminList"
+                   aria-live="polite">
+                Open Manage Motivation to load posts.
+              </div>
+
+              <div class="actions"
+                   style="margin-top:20px">
+
+                <button type="button"
+                        id="refreshMotivations"
+                        class="btn outline">
+                  ↻ Refresh Motivations
+                </button>
+              </div>
+
+              <p id="motivationLibraryStatus"
+                 class="status"
+                 role="status"
+                 aria-live="polite"></p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- =====================================
+             COMMENT MODERATION
+             ===================================== -->
+
         <section id="manage-comments"
                  class="admin-section hidden"
                  data-admin-panel>
@@ -585,15 +1047,18 @@
             </div>
           </div>
 
+          <!-- EXISTING ARTICLE COMMENTS -->
           <div class="admin-panel">
             <div class="admin-panel-heading">
               <div>
-                <h3>Pending Comments</h3>
-                <p>Approve or delete guest submissions.</p>
+                <h3>Pending Article Comments</h3>
+                <p>
+                  Approve or delete article comments.
+                </p>
               </div>
 
               <span class="admin-panel-label">
-                REVIEW QUEUE
+                ARTICLE COMMENTS
               </span>
             </div>
 
@@ -604,12 +1069,51 @@
             </div>
           </div>
 
+          <!-- EXISTING GUIDES COMMENTS -->
+          <div class="admin-panel guide-moderation-block">
+
+            <div class="admin-panel-heading">
+              <div>
+                <h3>Pending Guides Comments</h3>
+                <p>
+                  Review guest comments from
+                  the Recovery Guides page.
+                </p>
+              </div>
+
+              <span class="admin-panel-label">
+                GUIDES COMMENTS
+              </span>
+            </div>
+
+            <div id="adminGuideComments"
+                 class="admin-record-list"
+                 aria-live="polite">
+              Open Comment Moderation to load
+              Guides comments.
+            </div>
+
+            <div class="actions"
+                 style="margin-top:20px">
+              <button type="button"
+                      class="btn outline"
+                      id="refreshAdminGuideComments">
+                ↻ Refresh Guides Comments
+              </button>
+            </div>
+
+            <p id="adminGuideCommentsStatus"
+               class="status"
+               role="status"
+               aria-live="polite"></p>
+          </div>
+
           <div class="admin-help-notice"
                style="margin-top:20px">
             <strong>Comment Policy</strong>
             <p>
-              Visitor comments require administrator
-              approval before public display.
+              Article and Guides comments require
+              administrator approval before publication.
             </p>
           </div>
         </section>
@@ -619,6 +1123,7 @@
             © <span id="year"></span>
             SAVA.COM Administration
           </span>
+
           <a href="#dashboardHome"
              data-admin-page="dashboardHome">
             Dashboard ↑
@@ -628,5 +1133,1033 @@
       </div>
     </main>
   </div>
+
+  <!-- =========================================
+       NEW: MANAGE MOTIVATION FUNCTIONS
+       ========================================= -->
+
+  <script>
+    (() => {
+      "use strict";
+
+      const el = id => document.getElementById(id);
+
+      const BUCKET = "sava-motivation-images";
+
+      let motivationRecords = [];
+      let editingImageURL = "";
+      let previewURL = "";
+
+      function errorText(error) {
+        return error?.message ||
+          "An unexpected error occurred.";
+      }
+
+      function motivationStatus(message) {
+        el("motivationEditorStatus").textContent =
+          message;
+      }
+
+      function libraryStatus(message) {
+        el("motivationLibraryStatus").textContent =
+          message;
+      }
+
+      function setMotivationNavState() {
+        document.querySelectorAll(
+          ".admin-nav-link[data-admin-page]"
+        ).forEach(link => {
+          link.removeAttribute("aria-current");
+          link.style.background = "transparent";
+          link.style.color = "#d2e3e7";
+        });
+
+        const link = el("manageMotivationNav");
+
+        link.setAttribute("aria-current", "page");
+        link.style.background =
+          "rgba(0,143,128,.22)";
+        link.style.color = "#a6f6e7";
+      }
+
+      function showManageMotivation(
+        updateHistory = true
+      ) {
+        const dashboard = el("adminDashboard");
+
+        if (dashboard.classList.contains("hidden")) {
+          return;
+        }
+
+        dashboard.querySelectorAll(
+          "[data-admin-panel]"
+        ).forEach(panel => {
+          panel.classList.toggle(
+            "hidden",
+            panel.id !== "manage-motivation"
+          );
+        });
+
+        el("adminCurrentPage").textContent =
+          "Manage Motivation";
+
+        setMotivationNavState();
+
+        if (updateHistory) {
+          const url =
+            new URL(window.location.href);
+
+          url.hash = "manage-motivation";
+
+          history.pushState(
+            { adminPage: "manage-motivation" },
+            "",
+            url
+          );
+        }
+
+        window.scrollTo(0, 0);
+
+        loadMotivations();
+      }
+
+      async function authorizedClient() {
+        if (
+          typeof savaDatabase === "undefined" ||
+          !savaDatabase
+        ) {
+          throw new Error(
+            "Supabase is not ready. Sign in first."
+          );
+        }
+
+        const { data, error } =
+          await savaDatabase.auth.getUser();
+
+        if (error || !data?.user) {
+          throw new Error(
+            "Administrator sign-in required."
+          );
+        }
+
+        const result = await savaDatabase
+          .from("sava_admins")
+          .select("user_id")
+          .eq("user_id", data.user.id)
+          .maybeSingle();
+
+        if (result.error || !result.data) {
+          throw new Error(
+            "This account is not authorized."
+          );
+        }
+
+        return savaDatabase;
+      }
+
+      function updateMotivationFields() {
+        const isImage =
+          el("motivationType").value === "image";
+
+        el("motivationTextFields")
+          .classList.toggle("hidden", isImage);
+
+        el("motivationImageFields")
+          .classList.toggle("hidden", !isImage);
+
+        el("motivationBody").required = !isImage;
+        el("motivationImage").required =
+          isImage && !editingImageURL;
+      }
+
+      function setImagePreview(url) {
+        const preview =
+          el("motivationImagePreview");
+
+        if (!url) {
+          preview.removeAttribute("src");
+          preview.classList.add("hidden");
+          return;
+        }
+
+        preview.src = url;
+        preview.classList.remove("hidden");
+      }
+
+      function releasePreviewURL() {
+        if (previewURL) {
+          URL.revokeObjectURL(previewURL);
+          previewURL = "";
+        }
+      }
+
+      function resetMotivationEditor() {
+        el("motivationEditorForm").reset();
+        el("motivationEditId").value = "";
+        el("motivationEditorHeading").textContent =
+          "Create Motivation";
+
+        editingImageURL = "";
+        releasePreviewURL();
+        setImagePreview("");
+
+        motivationStatus("");
+        updateMotivationFields();
+      }
+
+      function editMotivation(item) {
+        resetMotivationEditor();
+
+        el("motivationEditId").value = item.id;
+        el("motivationTitle").value = item.title;
+        el("motivationType").value =
+          item.content_type;
+        el("motivationBody").value =
+          item.body || "";
+
+        el("motivationOrder").value =
+          item.display_order ?? 0;
+
+        el("motivationPublished").checked =
+          !!item.is_published;
+
+        editingImageURL = item.image_url || "";
+
+        el("motivationEditorHeading").textContent =
+          "Edit Motivation";
+
+        updateMotivationFields();
+
+        if (editingImageURL) {
+          setImagePreview(editingImageURL);
+        }
+
+        motivationStatus("Editing existing motivation.");
+
+        el("motivationEditorForm").scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+
+      function makeButton(
+        label,
+        handler,
+        danger = false
+      ) {
+        const button =
+          document.createElement("button");
+
+        button.type = "button";
+        button.textContent = label;
+        button.className = danger
+          ? "danger-button"
+          : "btn outline";
+
+        button.addEventListener("click", handler);
+        return button;
+      }
+
+      function renderMotivationList() {
+        const list = el("motivationAdminList");
+        list.replaceChildren();
+
+        if (!motivationRecords.length) {
+          list.textContent =
+            "No motivations created yet.";
+          return;
+        }
+
+        motivationRecords.forEach(item => {
+          const record =
+            document.createElement("article");
+
+          record.className =
+            "motivation-admin-record";
+
+          const type =
+            document.createElement("span");
+
+          type.className =
+            "motivation-admin-type";
+
+          type.textContent =
+            item.content_type === "image"
+              ? "IMAGE"
+              : "TEXT";
+
+          const title =
+            document.createElement("h3");
+
+          title.textContent = item.title;
+
+          const status =
+            document.createElement("p");
+
+          status.textContent =
+            (item.is_published
+              ? "Published"
+              : "Draft") +
+            " • Order " + item.display_order;
+
+          record.append(type, title, status);
+
+          if (item.content_type === "image" &&
+              item.image_url) {
+            const image =
+              document.createElement("img");
+
+            image.src = item.image_url;
+            image.alt = item.title;
+            image.loading = "lazy";
+
+            record.append(image);
+          }
+
+          if (item.content_type === "text" &&
+              item.body) {
+            const body =
+              document.createElement("p");
+
+            body.textContent = item.body;
+            record.append(body);
+          }
+
+          const actions =
+            document.createElement("div");
+
+          actions.className =
+            "motivation-admin-actions";
+
+          actions.append(
+            makeButton(
+              "Edit",
+              () => editMotivation(item)
+            ),
+            makeButton(
+              item.is_published
+                ? "Unpublish"
+                : "Publish",
+              () => toggleMotivation(item)
+            ),
+            makeButton(
+              "Delete",
+              () => deleteMotivation(item),
+              true
+            )
+          );
+
+          record.append(actions);
+          list.append(record);
+        });
+      }
+
+      async function loadMotivations() {
+        libraryStatus("Loading motivations...");
+
+        try {
+          const client = await authorizedClient();
+
+          const { data, error } = await client
+            .from("sava_motivations")
+            .select("*")
+            .order("display_order", {
+              ascending: true
+            })
+            .order("created_at", {
+              ascending: true
+            });
+
+          if (error) throw error;
+
+          motivationRecords = data || [];
+          renderMotivationList();
+
+          libraryStatus(
+            motivationRecords.length +
+            " motivation(s) available."
+          );
+
+        } catch (error) {
+          el("motivationAdminList").textContent =
+            "Unable to load motivations.";
+
+          libraryStatus(errorText(error));
+        }
+      }
+
+      async function uploadMotivationImage(
+        client,
+        file
+      ) {
+        const allowed = [
+          "image/jpeg",
+          "image/png",
+          "image/webp"
+        ];
+
+        if (!allowed.includes(file.type)) {
+          throw new Error(
+            "Only JPG, PNG and WebP images are allowed."
+          );
+        }
+
+        if (file.size > 5 * 1024 * 1024) {
+          throw new Error(
+            "Image must be 5 MB or smaller."
+          );
+        }
+
+        const extension = {
+          "image/jpeg": "jpg",
+          "image/png": "png",
+          "image/webp": "webp"
+        }[file.type];
+
+        const filename =
+          crypto.randomUUID() + "." + extension;
+
+        const { error } =
+          await client.storage
+            .from(BUCKET)
+            .upload(filename, file, {
+              contentType: file.type,
+              upsert: false
+            });
+
+        if (error) throw error;
+
+        const { data } = client.storage
+          .from(BUCKET)
+          .getPublicUrl(filename);
+
+        return data.publicUrl;
+      }
+
+      async function saveMotivation(event) {
+        event.preventDefault();
+
+        const button =
+          el("saveMotivationButton");
+
+        button.disabled = true;
+        motivationStatus("Saving motivation...");
+
+        try {
+          const client = await authorizedClient();
+
+          const id =
+            el("motivationEditId").value;
+
+          const title =
+            el("motivationTitle").value.trim();
+
+          const type =
+            el("motivationType").value;
+
+          const body =
+            el("motivationBody").value.trim();
+
+          const file =
+            el("motivationImage").files[0];
+
+          const order = Number(
+            el("motivationOrder").value
+          );
+
+          const published =
+            el("motivationPublished").checked;
+
+          if (title.length < 2 ||
+              title.length > 150) {
+            throw new Error(
+              "Title must contain 2–150 characters."
+            );
+          }
+
+          if (!Number.isInteger(order) ||
+              order < 0 || order > 9999) {
+            throw new Error(
+              "Enter a display order from 0 to 9999."
+            );
+          }
+
+          let imageURL = editingImageURL;
+
+          if (type === "image") {
+            if (file) {
+              motivationStatus("Uploading image...");
+
+              imageURL =
+                await uploadMotivationImage(
+                  client,
+                  file
+                );
+            }
+
+            if (!imageURL) {
+              throw new Error(
+                "Select an image for this motivation."
+              );
+            }
+          } else if (!body) {
+            throw new Error(
+              "Enter a motivational message."
+            );
+          }
+
+          const payload = {
+            title: title,
+            content_type: type,
+            body: type === "text" ? body : null,
+            image_url:
+              type === "image" ? imageURL : null,
+            display_order: order,
+            is_published: published,
+            updated_at: new Date().toISOString()
+          };
+
+          let response;
+
+          if (id) {
+            response = await client
+              .from("sava_motivations")
+              .update(payload)
+              .eq("id", id)
+              .select("id");
+          } else {
+            response = await client
+              .from("sava_motivations")
+              .insert(payload)
+              .select("id");
+          }
+
+          if (response.error) {
+            throw response.error;
+          }
+
+          if (!response.data?.length) {
+            throw new Error(
+              "Save was not permitted."
+            );
+          }
+
+          resetMotivationEditor();
+          await loadMotivations();
+
+          motivationStatus(
+            "Motivation saved successfully."
+          );
+
+        } catch (error) {
+          motivationStatus(
+            "Unable to save: " +
+            errorText(error)
+          );
+        } finally {
+          button.disabled = false;
+        }
+      }
+
+      async function toggleMotivation(item) {
+        try {
+          const client = await authorizedClient();
+
+          const { data, error } = await client
+            .from("sava_motivations")
+            .update({
+              is_published: !item.is_published,
+              updated_at: new Date().toISOString()
+            })
+            .eq("id", item.id)
+            .select("id");
+
+          if (error) throw error;
+
+          if (!data?.length) {
+            throw new Error(
+              "Publication change was not permitted."
+            );
+          }
+
+          await loadMotivations();
+
+        } catch (error) {
+          libraryStatus(errorText(error));
+        }
+      }
+
+      async function deleteMotivation(item) {
+        if (!confirm(
+          "Permanently delete this motivation?"
+        )) {
+          return;
+        }
+
+        try {
+          const client = await authorizedClient();
+
+          const { data, error } = await client
+            .from("sava_motivations")
+            .delete()
+            .eq("id", item.id)
+            .select("id");
+
+          if (error) throw error;
+
+          if (!data?.length) {
+            throw new Error(
+              "Deletion was not permitted."
+            );
+          }
+
+          if (el("motivationEditId").value ===
+              item.id) {
+            resetMotivationEditor();
+          }
+
+          await loadMotivations();
+
+        } catch (error) {
+          libraryStatus(errorText(error));
+        }
+      }
+
+      document.addEventListener(
+        "DOMContentLoaded",
+        () => {
+          el("manageMotivationNav").addEventListener(
+            "click",
+            event => {
+              event.preventDefault();
+              showManageMotivation();
+            }
+          );
+
+          el("motivationType").addEventListener(
+            "change",
+            updateMotivationFields
+          );
+
+          el("motivationImage").addEventListener(
+            "change",
+            event => {
+              releasePreviewURL();
+
+              const file = event.target.files[0];
+
+              if (!file) {
+                setImagePreview(editingImageURL);
+                return;
+              }
+
+              if (
+                ![
+                  "image/jpeg",
+                  "image/png",
+                  "image/webp"
+                ].includes(file.type) ||
+                file.size > 5 * 1024 * 1024
+              ) {
+                motivationStatus(
+                  "Select a JPG, PNG, or WebP " +
+                  "image no larger than 5 MB."
+                );
+
+                event.target.value = "";
+                setImagePreview(editingImageURL);
+                return;
+              }
+
+              previewURL =
+                URL.createObjectURL(file);
+
+              setImagePreview(previewURL);
+              motivationStatus("");
+            }
+          );
+
+          el("motivationEditorForm")
+            .addEventListener(
+              "submit",
+              saveMotivation
+            );
+
+          el("clearMotivationButton")
+            .addEventListener(
+              "click",
+              resetMotivationEditor
+            );
+
+          el("refreshMotivations")
+            .addEventListener(
+              "click",
+              loadMotivations
+            );
+
+          window.addEventListener(
+            "popstate",
+            () => {
+              if (
+                window.location.hash ===
+                "#manage-motivation"
+              ) {
+                showManageMotivation(false);
+              }
+            }
+          );
+
+          window.addEventListener(
+            "hashchange",
+            () => {
+              if (
+                window.location.hash ===
+                "#manage-motivation"
+              ) {
+                showManageMotivation(false);
+              }
+            }
+          );
+
+          el("adminLogout").addEventListener(
+            "click",
+            () => {
+              motivationRecords = [];
+              resetMotivationEditor();
+              el("motivationAdminList").textContent =
+                "Sign in to manage motivations.";
+            }
+          );
+
+          updateMotivationFields();
+        }
+      );
+    })();
+  </script>
+
+  <!-- =========================================
+       PRESERVED: GUIDES COMMENT MODERATION
+       ========================================= -->
+
+  <script>
+    (() => {
+      "use strict";
+
+      const $moderation = id =>
+        document.getElementById(id);
+
+      function moderationMessage(message) {
+        $moderation(
+          "adminGuideCommentsStatus"
+        ).textContent = message;
+      }
+
+      function moderationError(error) {
+        return error?.message ||
+          "An unexpected error occurred.";
+      }
+
+      async function getModerationClient() {
+        if (
+          typeof savaDatabase === "undefined" ||
+          !savaDatabase
+        ) {
+          throw new Error(
+            "Admin connection is not ready. " +
+            "Sign in and try again."
+          );
+        }
+
+        const { data, error } =
+          await savaDatabase.auth.getUser();
+
+        if (error || !data?.user) {
+          throw new Error(
+            "Sign in as an administrator."
+          );
+        }
+
+        const { data: admin, error: adminError } =
+          await savaDatabase
+            .from("sava_admins")
+            .select("user_id")
+            .eq("user_id", data.user.id)
+            .maybeSingle();
+
+        if (adminError || !admin) {
+          throw new Error(
+            "Administrator authorization required."
+          );
+        }
+
+        return savaDatabase;
+      }
+
+      function guideDate(value) {
+        const date = new Date(value);
+
+        return Number.isNaN(date.getTime())
+          ? ""
+          : date.toLocaleDateString(
+              "en-PH",
+              {
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+              }
+            );
+      }
+
+      function makeModerationButton(
+        label,
+        clickHandler,
+        danger = false
+      ) {
+        const button =
+          document.createElement("button");
+
+        button.type = "button";
+        button.textContent = label;
+
+        if (danger) {
+          button.className =
+            "guide-delete-button";
+        }
+
+        button.addEventListener(
+          "click",
+          clickHandler
+        );
+
+        return button;
+      }
+
+      function createModerationRecord(comment) {
+        const item =
+          document.createElement("article");
+
+        item.className =
+          "guide-moderation-record";
+
+        const name =
+          document.createElement("h3");
+
+        name.textContent = comment.visitor_name;
+
+        const date =
+          document.createElement("p");
+
+        date.className =
+          "guide-moderation-meta";
+
+        date.textContent =
+          guideDate(comment.created_at);
+
+        const message =
+          document.createElement("p");
+
+        message.textContent =
+          comment.comment_text;
+
+        const actions =
+          document.createElement("div");
+
+        actions.className =
+          "guide-moderation-actions";
+
+        const approve =
+          makeModerationButton(
+            "Approve",
+            () => updateGuideModeration(
+              comment.id,
+              "approve",
+              [approve, remove]
+            )
+          );
+
+        const remove =
+          makeModerationButton(
+            "Delete",
+            () => updateGuideModeration(
+              comment.id,
+              "delete",
+              [approve, remove]
+            ),
+            true
+          );
+
+        actions.append(approve, remove);
+        item.append(name, date, message, actions);
+
+        return item;
+      }
+
+      async function loadAdminGuideComments() {
+        const container =
+          $moderation("adminGuideComments");
+
+        container.textContent =
+          "Loading Guides comments...";
+
+        moderationMessage("");
+
+        try {
+          const client =
+            await getModerationClient();
+
+          const { data, error } =
+            await client
+              .from("sava_guide_comments")
+              .select(
+                "id,visitor_name,comment_text,created_at"
+              )
+              .eq("approved", false)
+              .order("created_at", {
+                ascending: false
+              });
+
+          if (error) throw error;
+
+          container.replaceChildren();
+
+          if (!data?.length) {
+            container.textContent =
+              "No pending Guides comments.";
+            return;
+          }
+
+          data.forEach(comment => {
+            container.append(
+              createModerationRecord(comment)
+            );
+          });
+
+        } catch (error) {
+          container.textContent =
+            "Unable to load Guides comments.";
+
+          moderationMessage(
+            moderationError(error)
+          );
+        }
+      }
+
+      async function updateGuideModeration(
+        commentId,
+        action,
+        buttons
+      ) {
+        if (action === "delete") {
+          if (!confirm(
+            "Delete this Guides comment?"
+          )) {
+            return;
+          }
+        }
+
+        buttons.forEach(button => {
+          button.disabled = true;
+        });
+
+        moderationMessage(
+          action === "approve"
+            ? "Approving comment..."
+            : "Deleting comment..."
+        );
+
+        try {
+          const client =
+            await getModerationClient();
+
+          let result;
+
+          if (action === "approve") {
+            result = await client
+              .from("sava_guide_comments")
+              .update({
+                approved: true
+              })
+              .eq("id", commentId)
+              .select("id");
+          } else {
+            result = await client
+              .from("sava_guide_comments")
+              .delete()
+              .eq("id", commentId)
+              .select("id");
+          }
+
+          if (result.error) {
+            throw result.error;
+          }
+
+          if (!result.data?.length) {
+            throw new Error(
+              "Action was not permitted."
+            );
+          }
+
+          await loadAdminGuideComments();
+
+        } catch (error) {
+          moderationMessage(
+            "Action failed: " +
+            moderationError(error)
+          );
+        } finally {
+          buttons.forEach(button => {
+            button.disabled = false;
+          });
+        }
+      }
+
+      document.addEventListener(
+        "DOMContentLoaded",
+        () => {
+          document.querySelectorAll(
+            '[data-admin-page="manage-comments"]'
+          ).forEach(link => {
+            link.addEventListener(
+              "click",
+              () => {
+                const dashboard =
+                  $moderation("adminDashboard");
+
+                if (
+                  dashboard &&
+                  !dashboard.classList
+                    .contains("hidden")
+                ) {
+                  loadAdminGuideComments();
+                }
+              }
+            );
+          });
+
+          $moderation(
+            "refreshAdminGuideComments"
+          ).addEventListener(
+            "click",
+            loadAdminGuideComments
+          );
+
+          $moderation(
+            "adminLogout"
+          ).addEventListener(
+            "click",
+            () => {
+              $moderation(
+                "adminGuideComments"
+              ).textContent =
+                "Sign in to review Guides comments.";
+
+              moderationMessage("");
+            }
+          );
+        }
+      );
+    })();
+  </script>
+
 </body>
 </html>
