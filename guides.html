@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102b3a">
+  <title>SAVA.COM | Recovery Guides</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <div class="container navrow">
+    <a class="logo" href="index.html">SAVA<span>.COM</span></a>
+    <button class="menu" id="menuBtn"
+            aria-controls="navlinks" aria-expanded="false">☰ Menu</button>
+
+    <nav class="navlinks" id="navlinks" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="awareness.html">Awareness</a>
+      <a href="guides.html" aria-current="page">Guides</a>
+      <a href="tracker.html">Tracker</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="motivation.html">Motivation</a>
+      <a href="support.html">Support</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section id="guides">
+    <div class="container">
+
+      <div class="section-head">
+        <span class="tag">Actionable guidance</span>
+        <h2>Recovery guides</h2>
+        <p>
+          Select a topic for practical, evidence-informed
+          strategies. Different people may need different
+          kinds of support.
+        </p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Recovery guide topics">
+
+        <button class="tab" type="button"
+                id="tab-smoking" role="tab"
+                aria-controls="guide-panel"
+                aria-selected="true"
+                data-guide="smoking">
+          Smoking
+        </button>
+
+        <button class="tab" type="button"
+                id="tab-vaping" role="tab"
+                aria-controls="guide-panel"
+                aria-selected="false"
+                data-guide="vaping">
+          Vaping
+        </button>
+
+        <button class="tab" type="button"
+                id="tab-alcohol" role="tab"
+                aria-controls="guide-panel"
+                aria-selected="false"
+                data-guide="alcohol">
+          Alcohol
+        </button>
+
+      </div>
+
+      <article class="guide" id="guide-panel"
+               role="tabpanel"
+               aria-labelledby="tab-smoking"
+               tabindex="0">
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footerrow">
+    <div>
+      <strong>SAVA.COM</strong> — Choose health. Choose hope.
+      <div>© <span id="year"></span> SAVA Student Project</div>
+    </div>
+    <div>
+      <a href="index.html">Back to home ↑</a>
+      <div>Made for awareness and education.</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

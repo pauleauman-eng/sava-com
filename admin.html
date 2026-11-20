@@ -1,0 +1,632 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102b3a">
+  <meta name="description"
+        content="SAVA.COM Administration Dashboard">
+  <title>Admin Dashboard | SAVA.COM</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/dist/umd/supabase.min.js"
+    defer>
+  </script>
+  <script src="script.js" defer></script>
+</head>
+
+<body class="admin-page">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ADMIN LOGIN -->
+  <section id="adminLogin" class="admin-login">
+    <div class="container">
+      <div class="card admin-login-card">
+
+        <div class="admin-login-brand">
+          <div class="admin-brand-mark">S</div>
+          <div>
+            <strong>SAVA.COM</strong>
+            <span>Administration</span>
+          </div>
+        </div>
+
+        <span class="tag">Administrator Access</span>
+        <h1>Welcome Back</h1>
+        <p class="muted">
+          Sign in to manage articles, publications,
+          and visitor comments.
+        </p>
+
+        <form id="adminLoginForm">
+          <label for="adminEmail">Email Address</label>
+          <input
+            type="email"
+            id="adminEmail"
+            placeholder="Enter admin email"
+            autocomplete="username"
+            required>
+
+          <label for="adminPassword">Password</label>
+          <input
+            type="password"
+            id="adminPassword"
+            placeholder="Enter password"
+            autocomplete="current-password"
+            required>
+
+          <button type="submit"
+                  class="btn primary admin-submit">
+            Sign In to Dashboard
+          </button>
+        </form>
+
+        <p id="loginStatus"
+           class="status"
+           role="status"
+           aria-live="polite"></p>
+
+        <div class="admin-login-bottom">
+          <a href="index.html">← Back to Website</a>
+          <span>Authorized administrators only</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADMIN WORKSPACE -->
+  <div id="adminDashboard" class="admin-app hidden">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+
+      <a href="#dashboardHome"
+         class="admin-sidebar-brand"
+         data-admin-page="dashboardHome">
+        <div class="admin-brand-mark">S</div>
+        <div>
+          <strong>SAVA.COM</strong>
+          <span>Admin Workspace</span>
+        </div>
+      </a>
+
+      <div class="admin-sidebar-label">MAIN MENU</div>
+
+      <nav class="admin-side-nav"
+           aria-label="Administrator navigation">
+
+        <a href="#dashboardHome"
+           class="admin-nav-link"
+           data-admin-page="dashboardHome"
+           aria-current="page">
+          <span class="admin-nav-icon">▦</span>
+          Dashboard
+        </a>
+
+        <a href="#create-article"
+           class="admin-nav-link"
+           data-admin-page="create-article">
+          <span class="admin-nav-icon">✎</span>
+          Create Article
+        </a>
+
+        <a href="#manage-articles"
+           class="admin-nav-link"
+           data-admin-page="manage-articles">
+          <span class="admin-nav-icon">▤</span>
+          Manage Articles
+        </a>
+
+        <a href="#manage-comments"
+           class="admin-nav-link"
+           data-admin-page="manage-comments">
+          <span class="admin-nav-icon">☷</span>
+          Comment Moderation
+        </a>
+      </nav>
+
+      <div class="admin-sidebar-label">WEBSITE</div>
+
+      <nav class="admin-side-nav"
+           aria-label="Public links">
+        <a href="index.html"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="admin-nav-link">
+          <span class="admin-nav-icon">⌂</span>
+          View Website
+        </a>
+
+        <a href="articles.html"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="admin-nav-link">
+          <span class="admin-nav-icon">↗</span>
+          Public Articles
+        </a>
+      </nav>
+
+      <div class="admin-sidebar-bottom">
+        <div class="admin-sidebar-info">
+          <div class="admin-status-dot"></div>
+          <div>
+            <strong>Admin Workspace</strong>
+            <span>SAVA.COM Management</span>
+          </div>
+        </div>
+
+        <button type="button"
+                id="adminLogout"
+                class="admin-sidebar-logout">
+          <span aria-hidden="true">⇥</span>
+          Sign Out
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main id="main" class="admin-main">
+
+      <div class="admin-topbar">
+        <div>
+          <span class="admin-topbar-caption">
+            SAVA.COM / Administration
+          </span>
+          <strong id="adminCurrentPage">Dashboard</strong>
+        </div>
+
+        <div class="admin-topbar-actions">
+          <a href="articles.html"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn outline">
+            View Articles ↗
+          </a>
+          <div class="admin-avatar"
+               aria-label="Administrator">A</div>
+        </div>
+      </div>
+
+      <div class="admin-content">
+
+        <!-- PAGE 1: DASHBOARD -->
+        <section id="dashboardHome"
+                 class="admin-section"
+                 data-admin-panel>
+
+          <div class="admin-page-heading">
+            <div>
+              <span class="admin-overline">OVERVIEW</span>
+              <h1>Dashboard</h1>
+              <p>
+                Your SAVA.COM content management overview.
+              </p>
+            </div>
+
+            <a href="#create-article"
+               data-admin-page="create-article"
+               class="btn primary">
+              + New Article
+            </a>
+          </div>
+
+          <!-- LIVE STATISTICS -->
+          <div class="admin-block-heading"
+               style="margin-top:0">
+            <h2>Content Statistics</h2>
+            <p>
+              Live counts from your Supabase database.
+            </p>
+          </div>
+
+          <div class="admin-overview-grid">
+
+            <div class="admin-overview-card">
+              <div class="admin-overview-icon">▤</div>
+              <span>ALL CONTENT</span>
+              <h3 id="statTotalArticles"
+                  aria-live="polite">—</h3>
+              <p>Total Articles</p>
+              <strong>Published and drafts</strong>
+            </div>
+
+            <div class="admin-overview-card">
+              <div class="admin-overview-icon">✓</div>
+              <span>PUBLIC CONTENT</span>
+              <h3 id="statPublishedArticles"
+                  aria-live="polite">—</h3>
+              <p>Published Articles</p>
+              <strong>Visible to readers</strong>
+            </div>
+
+            <div class="admin-overview-card">
+              <div class="admin-overview-icon">✎</div>
+              <span>UNPUBLISHED</span>
+              <h3 id="statDraftArticles"
+                  aria-live="polite">—</h3>
+              <p>Draft Articles</p>
+              <strong>Not publicly visible</strong>
+            </div>
+
+            <div class="admin-overview-card">
+              <div class="admin-overview-icon">☷</div>
+              <span>MODERATION</span>
+              <h3 id="statPendingComments"
+                  aria-live="polite">—</h3>
+              <p>Pending Comments</p>
+              <strong>Awaiting review</strong>
+            </div>
+
+          </div>
+
+          <div class="actions"
+               style="margin-top:18px">
+            <button type="button"
+                    id="refreshAdminStats"
+                    class="btn outline">
+              ↻ Refresh Statistics
+            </button>
+          </div>
+
+          <p id="adminStatsStatus"
+             class="status"
+             role="status"
+             aria-live="polite"></p>
+
+          <!-- WELCOME PANEL -->
+          <div class="admin-welcome-panel">
+            <div>
+              <span class="admin-overline">
+                CONTENT WORKSPACE
+              </span>
+              <h2>Keep SAVA.COM Informative</h2>
+              <p>
+                Publish evidence-based educational articles,
+                credit their authors, and maintain respectful
+                discussions through comment moderation.
+              </p>
+
+              <div class="admin-welcome-actions">
+                <a href="#create-article"
+                   data-admin-page="create-article"
+                   class="btn primary">
+                  Create New Article
+                </a>
+                <a href="#manage-comments"
+                   data-admin-page="manage-comments"
+                   class="btn outline">
+                  Review Comments
+                </a>
+              </div>
+            </div>
+
+            <div class="admin-welcome-symbol"
+                 aria-hidden="true">S</div>
+          </div>
+
+          <!-- QUICK ACTIONS -->
+          <div class="admin-block-heading">
+            <h2>Quick Access</h2>
+            <p>Choose a management tool.</p>
+          </div>
+
+          <div class="admin-quick-links">
+            <a href="#create-article"
+               data-admin-page="create-article">
+              <span>✎</span>
+              Write an Article
+              <strong>→</strong>
+            </a>
+
+            <a href="#manage-articles"
+               data-admin-page="manage-articles">
+              <span>▤</span>
+              Article Library
+              <strong>→</strong>
+            </a>
+
+            <a href="#manage-comments"
+               data-admin-page="manage-comments">
+              <span>☷</span>
+              Pending Comments
+              <strong>→</strong>
+            </a>
+          </div>
+        </section>
+
+        <!-- PAGE 2: CREATE / EDIT ARTICLE -->
+        <section id="create-article"
+                 class="admin-section hidden"
+                 data-admin-panel>
+
+          <div class="admin-page-heading">
+            <div>
+              <span class="admin-overline">
+                CONTENT EDITOR
+              </span>
+              <h2 id="editorHeading">
+                Create Article
+              </h2>
+              <p>
+                Write and publish educational content
+                for SAVA.COM visitors.
+              </p>
+            </div>
+
+            <a href="#manage-articles"
+               data-admin-page="manage-articles"
+               class="btn outline">
+              Manage Articles
+            </a>
+          </div>
+
+          <div class="admin-editor-layout">
+            <div class="admin-panel">
+
+              <div class="admin-panel-heading">
+                <div>
+                  <h3>Article Information</h3>
+                  <p>Complete the article details.</p>
+                </div>
+              </div>
+
+              <form id="articleEditor">
+                <input type="hidden"
+                       id="editArticleId">
+
+                <div class="admin-form-group">
+                  <label for="articleTitle">
+                    Article Title
+                  </label>
+                  <input
+                    type="text"
+                    id="articleTitle"
+                    minlength="3"
+                    maxlength="180"
+                    placeholder="Enter article title"
+                    required>
+                </div>
+
+                <div class="admin-form-group">
+                  <label for="articleAuthor">
+                    Author Name
+                  </label>
+                  <input
+                    type="text"
+                    id="articleAuthor"
+                    minlength="2"
+                    maxlength="100"
+                    placeholder="Full name of the author"
+                    autocomplete="off"
+                    required>
+                  <p class="admin-field-help">
+                    Displayed on the public article.
+                  </p>
+                </div>
+
+                <div class="admin-form-group">
+                  <label for="articleExcerpt">
+                    Short Description
+                  </label>
+                  <textarea
+                    id="articleExcerpt"
+                    rows="4"
+                    placeholder="Brief article summary..."></textarea>
+                </div>
+
+                <div class="admin-form-group">
+                  <label for="articleBody">
+                    Article Content
+                  </label>
+                  <textarea
+                    id="articleBody"
+                    rows="14"
+                    placeholder="Write your article..."
+                    required></textarea>
+                </div>
+
+                <div class="admin-form-group">
+                  <label for="articleImage">
+                    Cover Image
+                  </label>
+
+                  <div class="admin-upload-area">
+                    <div class="admin-upload-symbol">↑</div>
+                    <strong>Upload Article Cover</strong>
+                    <p>
+                      JPEG, PNG, WebP — maximum 5 MB
+                    </p>
+                    <input
+                      type="file"
+                      id="articleImage"
+                      accept="image/jpeg,image/png,image/webp">
+                  </div>
+
+                  <img
+                    id="imagePreview"
+                    class="image-preview hidden"
+                    alt="Article cover image preview">
+                </div>
+
+                <div class="admin-publish-box">
+                  <div>
+                    <strong>Publication Status</strong>
+                    <p>
+                      Publish immediately or save as draft.
+                    </p>
+                  </div>
+
+                  <label class="admin-publish-label">
+                    <input type="checkbox"
+                           id="articlePublished">
+                    Publish
+                  </label>
+                </div>
+
+                <div class="admin-editor-actions">
+                  <button type="submit"
+                          class="btn primary">
+                    Save Article
+                  </button>
+                  <button type="button"
+                          id="cancelEdit"
+                          class="btn outline">
+                    Clear Form
+                  </button>
+                </div>
+
+                <p id="editorStatus"
+                   class="status"
+                   role="status"
+                   aria-live="polite"></p>
+              </form>
+            </div>
+
+            <aside class="admin-editor-help">
+              <div class="admin-panel">
+                <h3>Publishing Guide</h3>
+
+                <div class="admin-help-step">
+                  <span>01</span>
+                  <p>Write a clear, descriptive title.</p>
+                </div>
+
+                <div class="admin-help-step">
+                  <span>02</span>
+                  <p>Credit the correct author.</p>
+                </div>
+
+                <div class="admin-help-step">
+                  <span>03</span>
+                  <p>
+                    Add content and an optional cover image.
+                  </p>
+                </div>
+
+                <div class="admin-help-step">
+                  <span>04</span>
+                  <p>
+                    Publish or save the article as a draft.
+                  </p>
+                </div>
+              </div>
+
+              <div class="admin-help-notice">
+                <strong>Editorial Reminder</strong>
+                <p>
+                  Review health information for accuracy
+                  and credit original authors.
+                </p>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- PAGE 3: MANAGE ARTICLES -->
+        <section id="manage-articles"
+                 class="admin-section hidden"
+                 data-admin-panel>
+
+          <div class="admin-page-heading">
+            <div>
+              <span class="admin-overline">
+                CONTENT LIBRARY
+              </span>
+              <h2>Manage Articles</h2>
+              <p>
+                Edit, publish, unpublish, or delete articles.
+              </p>
+            </div>
+
+            <a href="#create-article"
+               data-admin-page="create-article"
+               class="btn primary">
+              + New Article
+            </a>
+          </div>
+
+          <div class="admin-panel">
+            <div class="admin-panel-heading">
+              <div>
+                <h3>Article Library</h3>
+                <p>Published articles and drafts.</p>
+              </div>
+              <span class="admin-panel-label">
+                SUPABASE
+              </span>
+            </div>
+
+            <div id="adminArticleList"
+                 class="admin-record-list"
+                 aria-live="polite">
+              Loading articles...
+            </div>
+          </div>
+        </section>
+
+        <!-- PAGE 4: COMMENT MODERATION -->
+        <section id="manage-comments"
+                 class="admin-section hidden"
+                 data-admin-panel>
+
+          <div class="admin-page-heading">
+            <div>
+              <span class="admin-overline">
+                COMMUNITY MANAGEMENT
+              </span>
+              <h2>Comment Moderation</h2>
+              <p>
+                Review submitted comments before publication.
+              </p>
+            </div>
+          </div>
+
+          <div class="admin-panel">
+            <div class="admin-panel-heading">
+              <div>
+                <h3>Pending Comments</h3>
+                <p>Approve or delete guest submissions.</p>
+              </div>
+
+              <span class="admin-panel-label">
+                REVIEW QUEUE
+              </span>
+            </div>
+
+            <div id="adminComments"
+                 class="admin-record-list"
+                 aria-live="polite">
+              Loading comments...
+            </div>
+          </div>
+
+          <div class="admin-help-notice"
+               style="margin-top:20px">
+            <strong>Comment Policy</strong>
+            <p>
+              Visitor comments require administrator
+              approval before public display.
+            </p>
+          </div>
+        </section>
+
+        <footer class="admin-content-footer">
+          <span>
+            © <span id="year"></span>
+            SAVA.COM Administration
+          </span>
+          <a href="#dashboardHome"
+             data-admin-page="dashboardHome">
+            Dashboard ↑
+          </a>
+        </footer>
+
+      </div>
+    </main>
+  </div>
+</body>
+</html>

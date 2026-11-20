@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102b3a">
+  <title>SAVA.COM | Awareness Quiz</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <div class="container navrow">
+    <a class="logo" href="index.html">SAVA<span>.COM</span></a>
+    <button class="menu" id="menuBtn"
+            aria-controls="navlinks" aria-expanded="false">☰ Menu</button>
+
+    <nav class="navlinks" id="navlinks" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="awareness.html">Awareness</a>
+      <a href="guides.html">Guides</a>
+      <a href="tracker.html">Tracker</a>
+      <a href="quiz.html" aria-current="page">Quiz</a>
+      <a href="motivation.html">Motivation</a>
+      <a href="support.html">Support</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section id="quiz">
+    <div class="container">
+
+      <div class="section-head">
+        <span class="tag">Test your knowledge</span>
+        <h2>Interactive awareness quiz</h2>
+        <p>
+          Five educational questions, instant scoring,
+          and explanations. This is not a diagnosis
+          or addiction screening test.
+        </p>
+      </div>
+
+      <div class="card">
+
+        <form id="quizForm">
+          <div id="quizQuestions"></div>
+
+          <div class="actions">
+            <button class="btn primary" type="submit">
+              Check my answers
+            </button>
+
+            <button class="btn outline"
+                    type="button" id="resetQuiz">
+              Try again
+            </button>
+          </div>
+        </form>
+
+        <div id="quizResult" aria-live="polite"></div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footerrow">
+    <div>
+      <strong>SAVA.COM</strong> — Choose health. Choose hope.
+      <div>© <span id="year"></span> SAVA Student Project</div>
+    </div>
+    <div>
+      <a href="index.html">Back to home ↑</a>
+      <div>Made for awareness and education.</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

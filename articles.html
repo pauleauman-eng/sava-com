@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102b3a">
+  <meta
+    name="description"
+    content="Educational articles about smoking, vaping, alcohol addiction, prevention, and recovery.">
+
+  <title>Articles | SAVA.COM</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/dist/umd/supabase.min.js"
+    defer>
+  </script>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header>
+    <div class="container navrow">
+      <a href="index.html" class="logo">
+        SAVA<span>.COM</span>
+      </a>
+
+      <button
+        type="button"
+        class="menu"
+        id="menuBtn"
+        aria-expanded="false"
+        aria-controls="navlinks">
+        ☰ Menu
+      </button>
+
+      <nav
+        class="navlinks"
+        id="navlinks"
+        aria-label="Main navigation">
+
+        <a href="index.html">Home</a>
+        <a href="awareness.html">Awareness</a>
+        <a href="guides.html">Guides</a>
+        <a href="tracker.html">Tracker</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="motivation.html">Motivation</a>
+        <a href="articles.html" aria-current="page">Articles</a>
+        <a href="support.html">Support</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ARTICLES HERO -->
+    <section class="article-hero">
+      <div class="container">
+        <span class="tag">Knowledge &amp; Awareness</span>
+        <h1>SAVA Articles</h1>
+        <p>
+          Explore educational articles about smoking,
+          vaping, alcohol addiction, prevention,
+          recovery, and healthy living.
+        </p>
+      </div>
+    </section>
+
+    <!-- ARTICLE DIRECTORY -->
+    <section id="articleDirectory">
+      <div class="container">
+
+        <div class="section-head">
+          <span class="tag">Explore Our Articles</span>
+          <h2>Latest Articles</h2>
+          <p>
+            Discover useful information to help make
+            healthier and more informed decisions.
+          </p>
+        </div>
+
+        <label for="articleSearch">Search Articles</label>
+
+        <input
+          type="search"
+          id="articleSearch"
+          placeholder="Search by title or author..."
+          autocomplete="off">
+
+        <p id="articleStatus"
+           class="status"
+           role="status">
+          Loading articles...
+        </p>
+
+        <div class="article-grid" id="articleGrid"></div>
+
+      </div>
+    </section>
+
+    <!-- FULL ARTICLE -->
+    <section id="articleDetail"
+             class="article-detail hidden">
+
+      <div class="container">
+
+        <button
+          type="button"
+          class="btn outline"
+          id="backArticles">
+          ← Back to Articles
+        </button>
+
+        <article
+          id="articleContent"
+          class="article-body">
+        </article>
+
+        <!-- COMMENTS -->
+        <div class="article-comments">
+          <h2>Comments</h2>
+
+          <p class="muted">
+            Share your thoughts respectfully.
+            No account is required.
+            Comments appear after administrator approval.
+          </p>
+
+          <div
+            id="commentsList"
+            aria-live="polite">
+          </div>
+
+          <form id="commentForm" class="card">
+            <h3>Leave a Comment</h3>
+
+            <label for="visitorName">
+              Your Name or Nickname
+            </label>
+            <input
+              type="text"
+              id="visitorName"
+              minlength="2"
+              maxlength="50"
+              placeholder="Enter your name"
+              required>
+
+            <label for="commentText">Your Comment</label>
+            <textarea
+              id="commentText"
+              rows="5"
+              minlength="2"
+              maxlength="1000"
+              placeholder="Write your comment..."
+              required></textarea>
+
+            <p class="tiny muted">
+              Avoid posting sensitive personal information.
+            </p>
+
+            <button type="submit" class="btn primary">
+              Submit Comment
+            </button>
+
+            <p
+              id="commentStatus"
+              class="status"
+              role="status"
+              aria-live="polite"></p>
+
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footerrow">
+      <div>
+        <strong>SAVA.COM</strong>
+        — Choose health. Choose hope.
+        <div>
+          © <span id="year"></span>
+          SAVA Student Project
+        </div>
+      </div>
+
+      <div>
+        <a href="index.html">Back to Home ↑</a>
+        <div>Made for awareness and education.</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

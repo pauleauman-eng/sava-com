@@ -1,0 +1,754 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta name="theme-color" content="#102b3a">
+
+  <meta
+    name="description"
+    content="Learn about the effects of smoking, vaping, and alcohol on health through educational images and prevention tips."
+  >
+
+  <title>Awareness | SAVA.COM</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+
+  <!-- Awareness image-card styling -->
+  <style>
+    .awareness-image-card {
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .awareness-image-card .awareness-photo {
+      width: 100%;
+      height: 230px;
+      display: block;
+      object-fit: cover;
+      background: var(--mint);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .awareness-card-content {
+      padding: 25px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .awareness-card-content h3 {
+      margin-bottom: 14px;
+      font-size: 1.35rem;
+    }
+
+    .awareness-card-content p {
+      margin-bottom: 15px;
+    }
+
+    .awareness-card-content .btn {
+      align-self: flex-start;
+      margin-top: auto;
+    }
+
+    .awareness-effect-layout {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+      gap: 30px;
+      align-items: start;
+    }
+
+    .awareness-effect-figure {
+      margin: 0;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--background);
+    }
+
+    .awareness-effect-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .awareness-effect-figure figcaption {
+      margin-top: 12px;
+    }
+
+    .awareness-effect-list .card {
+      margin-bottom: 14px;
+    }
+
+    .awareness-effect-list .card:last-of-type {
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 780px) {
+      .awareness-image-card .awareness-photo {
+        height: 210px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .awareness-image-card .awareness-photo {
+        height: 220px;
+      }
+
+      .awareness-card-content {
+        padding: 22px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <a class="skip" href="#main">
+    Skip to content
+  </a>
+
+  <!-- MAIN NAVIGATION -->
+  <header>
+    <div class="container navrow">
+
+      <a href="index.html" class="logo">
+        SAVA<span>.COM</span>
+      </a>
+
+      <button
+        type="button"
+        class="menu"
+        id="menuBtn"
+        aria-expanded="false"
+        aria-controls="navlinks">
+        ☰ Menu
+      </button>
+
+      <nav
+        class="navlinks"
+        id="navlinks"
+        aria-label="Main navigation">
+
+        <a href="index.html">Home</a>
+
+        <a
+          href="awareness.html"
+          aria-current="page">
+          Awareness
+        </a>
+
+        <a href="guides.html">Guides</a>
+        <a href="tracker.html">Tracker</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="motivation.html">Motivation</a>
+        <a href="articles.html">Articles</a>
+        <a href="support.html">Support</a>
+        <a href="about.html">About</a>
+
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- PAGE INTRODUCTION -->
+    <section class="page-hero">
+      <div class="container">
+
+        <span class="tag">
+          Knowledge Is Prevention
+        </span>
+
+        <h1>
+          Understand the Risks.
+          Protect Your Health.
+        </h1>
+
+        <p>
+          Smoking, vaping, and harmful alcohol use
+          can affect many parts of the body.
+
+          Explore the medical illustrations below
+          to understand possible health consequences
+          and how healthier choices can help.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- =====================================
+         THREE AWARENESS CARDS WITH IMAGES
+         ===================================== -->
+
+    <section>
+      <div class="container">
+
+        <div class="section-head">
+          <span class="tag">Health Awareness</span>
+
+          <h2>
+            Three Habits, Serious Health Risks
+          </h2>
+
+          <p>
+            Learning how these substances affect
+            the body is an important step toward
+            prevention and informed decision-making.
+          </p>
+        </div>
+
+        <div class="awareness-grid">
+
+          <!-- SMOKING CARD -->
+          <article class="card awareness-card awareness-image-card">
+
+            <img
+              src="images/smoking.jpg"
+              alt="Educational image showing the health effects of smoking"
+              class="awareness-photo"
+              loading="lazy">
+
+            <div class="awareness-card-content">
+
+              <h3>Smoking</h3>
+
+              <p>
+                Cigarette smoke exposes the body
+                to nicotine, carbon monoxide,
+                and many toxic chemicals.
+              </p>
+
+              <p>
+                Smoking can damage the lungs,
+                blood vessels, and heart, and
+                increases the risk of several
+                cancers and chronic diseases.
+              </p>
+
+              <a
+                href="#smoking-effects"
+                class="btn outline">
+                Explore Effects
+              </a>
+
+            </div>
+          </article>
+
+          <!-- VAPING CARD -->
+          <article class="card awareness-card awareness-image-card">
+
+            <img
+              src="images/vaping.jpg"
+              alt="Educational image showing the health effects of vaping"
+              class="awareness-photo"
+              loading="lazy">
+
+            <div class="awareness-card-content">
+
+              <h3>Vaping</h3>
+
+              <p>
+                Electronic cigarettes produce
+                an aerosol that users inhale
+                into their lungs.
+              </p>
+
+              <p>
+                This aerosol may contain nicotine,
+                ultrafine particles, metals,
+                and other potentially harmful
+                substances. Vaping is not risk-free.
+              </p>
+
+              <a
+                href="#vaping-effects"
+                class="btn outline">
+                Explore Effects
+              </a>
+
+            </div>
+          </article>
+
+          <!-- ALCOHOL CARD -->
+          <article class="card awareness-card awareness-image-card">
+
+            <img
+              src="images/alcohol.jpg"
+              alt="Educational image showing the health effects of alcohol"
+              class="awareness-photo"
+              loading="lazy">
+
+            <div class="awareness-card-content">
+
+              <h3>Alcohol</h3>
+
+              <p>
+                Alcohol affects the central
+                nervous system and can impair
+                coordination, attention,
+                and judgment.
+              </p>
+
+              <p>
+                Heavy or prolonged drinking can
+                contribute to liver disease,
+                heart problems, certain cancers,
+                and alcohol dependence.
+              </p>
+
+              <a
+                href="#alcohol-effects"
+                class="btn outline">
+                Explore Effects
+              </a>
+
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================
+         SMOKING EFFECTS
+         ===================================== -->
+
+    <section id="smoking-effects"
+             style="background:#ffffff;">
+
+      <div class="container">
+
+        <div class="section-head">
+          <span class="tag">Smoking Awareness</span>
+
+          <h2>Effects of Smoking on the Body</h2>
+
+          <p>
+            Cigarette smoking can harm organs
+            throughout the body, not only the lungs.
+          </p>
+        </div>
+
+        <div class="awareness-effect-layout">
+
+          <figure class="awareness-effect-figure">
+
+            <img
+              src="images/smoking.jpg"
+              alt="Health effects of smoking"
+              loading="lazy">
+
+            <figcaption class="muted tiny">
+              Educational image illustrating
+              the health risks of smoking.
+            </figcaption>
+
+          </figure>
+
+          <div class="awareness-effect-list">
+
+            <h3>Possible Health Consequences</h3>
+
+            <div class="card">
+              <h3>🫁 Lungs</h3>
+              <p>
+                Smoking increases the risk of
+                chronic obstructive pulmonary
+                disease (COPD), lung cancer,
+                and respiratory problems.
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>❤️ Heart and Blood Vessels</h3>
+              <p>
+                Smoking increases the risk of
+                coronary heart disease, stroke,
+                and blood vessel damage.
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>🧠 Brain</h3>
+              <p>
+                Nicotine is addictive, while
+                smoking increases the risk of stroke.
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>🦷 Mouth and Teeth</h3>
+              <p>
+                Tobacco use increases the risk
+                of gum disease, tooth loss,
+                and cancers of the mouth.
+              </p>
+            </div>
+
+            <a
+              href="https://www.cdc.gov/tobacco/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn outline">
+              Learn More from CDC ↗
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================
+         VAPING EFFECTS
+         ===================================== -->
+
+    <section id="vaping-effects"
+             style="background:var(--mint);">
+
+      <div class="container">
+
+        <div class="section-head">
+          <span class="tag">Vaping Awareness</span>
+
+          <h2>Effects of Vaping on the Body</h2>
+
+          <p>
+            Vaping exposes the lungs to aerosol
+            containing substances that may harm
+            respiratory health.
+          </p>
+        </div>
+
+        <div class="awareness-effect-layout">
+
+          <figure class="awareness-effect-figure"
+                  style="background:#ffffff;">
+
+            <img
+              src="images/vaping.jpg"
+              alt="Health effects of vaping"
+              loading="lazy">
+
+            <figcaption class="muted tiny">
+              Educational image illustrating
+              the possible health effects of vaping.
+            </figcaption>
+
+          </figure>
+
+          <div class="awareness-effect-list">
+
+            <h3>Possible Health Consequences</h3>
+
+            <div class="card">
+              <h3>🫁 Respiratory System</h3>
+              <p>
+                E-cigarette aerosol may irritate
+                the airways and contribute to
+                inflammatory changes in the lungs.
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>🧠 Nicotine Dependence</h3>
+              <p>
+                Many vaping products contain nicotine,
+                which can lead to addiction and affect
+                the developing adolescent brain.
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>🧪 Chemical Exposure</h3>
+              <p>
+                Aerosol can contain metals,
+                ultrafine particles, and
+                potentially harmful chemicals.
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>⚠️ Lung Injury</h3>
+              <p>
+                Severe vaping-associated lung injury
+                has occurred, particularly during
+                outbreaks involving certain
+                THC-containing products.
+              </p>
+            </div>
+
+            <a
+              href="https://www.cdc.gov/tobacco/e-cigarettes/health-effects.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn outline">
+              Learn More from CDC ↗
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================
+         ALCOHOL EFFECTS
+         ===================================== -->
+
+    <section id="alcohol-effects"
+             style="background:#ffffff;">
+
+      <div class="container">
+
+        <div class="section-head">
+          <span class="tag">Alcohol Awareness</span>
+
+          <h2>Effects of Alcohol on the Body</h2>
+
+          <p>
+            Alcohol affects multiple organs.
+            Risks depend on the amount consumed,
+            drinking patterns, and individual health.
+          </p>
+        </div>
+
+        <div class="awareness-effect-layout">
+
+          <figure class="awareness-effect-figure">
+
+            <img
+              src="images/alcohol.jpg"
+              alt="Health effects of alcohol"
+              loading="lazy">
+
+            <figcaption class="muted tiny">
+              Educational image illustrating
+              the health risks of harmful alcohol use.
+            </figcaption>
+
+          </figure>
+
+          <div class="awareness-effect-list">
+
+            <h3>Possible Health Consequences</h3>
+
+            <div class="card">
+              <h3>🧠 Brain</h3>
+              <p>
+                Alcohol can affect memory,
+                coordination, judgment,
+                and decision-making.
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>❤️ Heart</h3>
+              <p>
+                Heavy drinking can contribute
+                to high blood pressure,
+                irregular heart rhythms,
+                and heart muscle damage.
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>🩺 Liver</h3>
+              <p>
+                Long-term harmful alcohol use
+                can cause fatty liver,
+                hepatitis, fibrosis, and cirrhosis.
+              </p>
+            </div>
+
+            <div class="card">
+              <h3>⚠️ Dependence and Withdrawal</h3>
+              <p>
+                Alcohol dependence may lead
+                to withdrawal symptoms.
+                Severe withdrawal can be
+                medically dangerous.
+              </p>
+            </div>
+
+            <a
+              href="https://www.niaaa.nih.gov/alcohols-effects-health/alcohols-effects-body"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn outline">
+              Learn More from NIAAA ↗
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================
+         SIX HEALTHY HABITS
+         ===================================== -->
+
+    <section style="background:var(--background);">
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <span class="tag">
+            Prevention and Healthy Living
+          </span>
+
+          <h2>
+            Six Steps Toward Healthier Choices
+          </h2>
+
+          <p>
+            Building healthy habits and seeking
+            trustworthy support can help reduce
+            substance-related risks.
+          </p>
+
+        </div>
+
+        <div class="health-steps">
+
+          <article class="health-step">
+            <div class="step-number">1</div>
+            <h3>Learn the Facts</h3>
+            <p>
+              Use reliable health information
+              to understand the risks of substance use.
+            </p>
+          </article>
+
+          <article class="health-step">
+            <div class="step-number">2</div>
+            <h3>Recognize Triggers</h3>
+            <p>
+              Identify situations, stressors,
+              and routines associated with
+              cravings or risky habits.
+            </p>
+          </article>
+
+          <article class="health-step">
+            <div class="step-number">3</div>
+            <h3>Choose Healthy Activities</h3>
+            <p>
+              Make time for exercise, hobbies,
+              rest, and supportive social connections.
+            </p>
+          </article>
+
+          <article class="health-step">
+            <div class="step-number">4</div>
+            <h3>Build Support</h3>
+            <p>
+              Talk with trusted family members,
+              friends, counselors,
+              or healthcare professionals.
+            </p>
+          </article>
+
+          <article class="health-step">
+            <div class="step-number">5</div>
+            <h3>Set Realistic Goals</h3>
+            <p>
+              Take manageable steps and
+              recognize progress without
+              expecting perfection.
+            </p>
+          </article>
+
+          <article class="health-step">
+            <div class="step-number">6</div>
+            <h3>Seek Professional Help</h3>
+            <p>
+              Ask for medical advice or treatment
+              when substance use is difficult
+              to control or withdrawal is possible.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- NEXT STEPS -->
+    <section style="background:var(--mint);">
+
+      <div class="container">
+
+        <div class="section-head">
+          <span class="tag">Move Forward</span>
+
+          <h2>Knowledge Is the First Step</h2>
+
+          <p>
+            Continue learning, explore recovery
+            guidance, or find professional
+            support when needed.
+          </p>
+        </div>
+
+        <div class="actions">
+
+          <a href="guides.html" class="btn primary">
+            Explore Recovery Guides
+          </a>
+
+          <a href="support.html" class="btn outline">
+            Find Support
+          </a>
+
+          <a href="quiz.html" class="btn outline">
+            Test Your Knowledge
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footerrow">
+
+      <div>
+        <strong>SAVA.COM</strong>
+        — Choose health. Choose hope.
+
+        <div>
+          © <span id="year"></span>
+          SAVA Student Project
+        </div>
+      </div>
+
+      <div>
+        <a href="about.html">About Us</a>
+
+        <div>
+          Smoking, Vaping &amp; Alcohol
+          Addiction Awareness
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>

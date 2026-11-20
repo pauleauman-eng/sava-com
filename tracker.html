@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102b3a">
+  <title>SAVA.COM | Recovery Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <div class="container navrow">
+    <a class="logo" href="index.html">SAVA<span>.COM</span></a>
+    <button class="menu" id="menuBtn"
+            aria-controls="navlinks" aria-expanded="false">☰ Menu</button>
+
+    <nav class="navlinks" id="navlinks" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="awareness.html">Awareness</a>
+      <a href="guides.html">Guides</a>
+      <a href="tracker.html" aria-current="page">Tracker</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="motivation.html">Motivation</a>
+      <a href="support.html">Support</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section id="tracker" class="soft">
+    <div class="container">
+
+      <div class="section-head">
+        <span class="tag">Personal progress</span>
+        <h2>My recovery tracker</h2>
+        <p>
+          Set a personal goal and view your progress.
+          Your entries stay in this browser on this device;
+          no account or server is involved.
+        </p>
+      </div>
+
+      <div class="tracker-layout">
+
+        <div class="card">
+          <h3>Set your goal</h3>
+
+          <label for="habit">Habit to track</label>
+          <select id="habit">
+            <option value="smoking">Smoking-free</option>
+            <option value="vaping">Vaping-free</option>
+            <option value="alcohol">Alcohol-free</option>
+          </select>
+
+          <label for="startDate">Your starting date</label>
+          <input type="date" id="startDate">
+
+          <label for="goalDays">Milestone goal (days)</label>
+          <input type="number" id="goalDays"
+                 min="1" max="3650" value="30">
+
+          <div class="actions">
+            <button class="btn primary" id="saveTracker">
+              Save goal
+            </button>
+
+            <button class="btn outline" id="clearTracker">
+              Clear my data
+            </button>
+          </div>
+
+          <p id="trackerMessage" class="status" role="status">
+            Choose a start date to begin.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Your progress</h3>
+
+          <p id="habitLabel" class="muted tiny">
+            No goal saved yet
+          </p>
+
+          <div class="metric" id="daysCount">—</div>
+
+          <p class="muted">completed calendar days</p>
+
+          <div class="progress" id="progressBar"
+               role="progressbar"
+               aria-label="Progress toward goal"
+               aria-valuemin="0"
+               aria-valuemax="100"
+               aria-valuenow="0">
+            <div id="progressFill"></div>
+          </div>
+
+          <p id="progressText" class="status">
+            Set a goal to see your progress.
+          </p>
+
+          <div class="milestones" id="milestones"
+               aria-label="Milestones">
+          </div>
+
+          <p class="tiny muted">
+            This is a personal motivation tool,
+            not a medical assessment. Progress can be
+            restarted or changed at any time.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="notice tracker-notice">
+        <strong>Important for alcohol:</strong>
+        If you drink heavily or regularly and may be physically
+        dependent, stopping suddenly can cause dangerous withdrawal.
+        Seek medical advice before quitting abruptly. Seizures,
+        severe confusion, or hallucinations require emergency care.
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footerrow">
+    <div>
+      <strong>SAVA.COM</strong> — Choose health. Choose hope.
+      <div>© <span id="year"></span> SAVA Student Project</div>
+    </div>
+    <div>
+      <a href="index.html">Back to home ↑</a>
+      <div>Made for awareness and education.</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
