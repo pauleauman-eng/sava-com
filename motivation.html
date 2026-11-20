@@ -3,16 +3,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1"
-  >
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#102b3a">
-
-  <meta
-    name="description"
-    content="Discover motivational messages, inspirational images, healthy actions and encouragement at SAVA.COM."
-  >
+  <meta name="description"
+        content="Find motivational messages, healthy actions, and encouragement with SAVA.COM.">
 
   <title>SAVA.COM | Motivation Corner</title>
 
@@ -22,12 +17,12 @@
     src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/dist/umd/supabase.min.js"
     defer>
   </script>
-
   <script src="script.js" defer></script>
 
   <style>
     /* =========================================
-       SAVA.COM — MOTIVATION PAGE
+       SAVA.COM MOTIVATION PAGE
+       Navy and teal design
        ========================================= */
 
     .motivation-page {
@@ -38,18 +33,16 @@
     }
 
     .motivation-hero {
-      background: linear-gradient(
-        135deg,
-        #102b3a 0%,
-        #174c55 100%
-      );
-      color: #fff;
       padding: 75px 0;
+      background: linear-gradient(
+        135deg, #102b3a, #174c55
+      );
+      color: #ffffff;
       text-align: center;
     }
 
     .motivation-hero h1 {
-      color: #fff;
+      color: #ffffff;
       font-size: clamp(2.2rem, 5vw, 3.7rem);
       line-height: 1.2;
       max-width: 850px;
@@ -58,9 +51,9 @@
 
     .motivation-hero p {
       color: #d7e9e9;
-      line-height: 1.8;
       max-width: 700px;
       margin: 0 auto;
+      line-height: 1.8;
     }
 
     .motivation-hero-accent {
@@ -77,14 +70,15 @@
 
     .motivation-feature-grid {
       display: grid;
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(
+        2, minmax(0, 1fr)
+      );
       gap: 25px;
-      align-items: stretch;
+      align-items: start;
     }
 
     .motivation-feature-card {
-      background: #fff;
+      background: #ffffff;
       border: 1px solid var(--motivation-border);
       border-radius: 20px;
       padding: 30px;
@@ -93,8 +87,8 @@
     }
 
     .motivation-feature-card h3 {
-      margin-bottom: 12px;
       color: var(--motivation-navy);
+      margin-bottom: 12px;
     }
 
     .motivation-feature-card p {
@@ -112,7 +106,7 @@
     }
 
     /* =========================================
-       AUTOMATIC MOTIVATION BILLBOARD
+       MOTIVATION BILLBOARD
        ========================================= */
 
     .motivation-billboard {
@@ -127,15 +121,12 @@
       align-items: stretch;
       justify-content: center;
       min-height: 300px;
-      flex: 1;
       padding: 22px;
-      background: linear-gradient(
-        145deg,
-        #102b3a,
-        #18505a
-      );
-      color: #fff;
       border-radius: 17px;
+      background: linear-gradient(
+        145deg, #102b3a, #18505a
+      );
+      color: #ffffff;
       overflow: hidden;
     }
 
@@ -162,11 +153,11 @@
     }
 
     .billboard-title {
-      color: #fff;
+      color: #ffffff;
       font-size: clamp(1.25rem, 2.5vw, 1.65rem);
       line-height: 1.35;
-      margin: 0 auto 15px;
       max-width: 580px;
+      margin: 0 auto 15px;
       overflow-wrap: anywhere;
     }
 
@@ -213,10 +204,6 @@
       margin-top: 16px;
     }
 
-    .billboard-controls .btn {
-      font-size: .88rem;
-    }
-
     .billboard-dots {
       display: flex;
       align-items: center;
@@ -254,12 +241,6 @@
       margin-top: 14px;
     }
 
-    .billboard-bottom-actions button:disabled,
-    .billboard-controls button:disabled {
-      opacity: .5;
-      cursor: not-allowed;
-    }
-
     .billboard-count {
       color: #617b85;
       font-size: .84rem;
@@ -281,33 +262,42 @@
       width: 0%;
       height: 100%;
       background: var(--motivation-teal);
-      transition: none;
+    }
+
+    .billboard-controls button:disabled,
+    .billboard-bottom-actions button:disabled {
+      opacity: .5;
+      cursor: not-allowed;
     }
 
     /* =========================================
-       60 SECOND RESET
+       60-SECOND RESET — IMPROVED
        ========================================= */
 
-    .motivation-button-row {
+    .motivation-reset-card {
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 12px;
-      margin-top: 18px;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .motivation-reset-description {
+      margin-bottom: 14px;
     }
 
     .motivation-timer {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
       text-align: center;
-      padding: 12px 0;
+      padding: 5px 0;
     }
 
+    /* Timer number only inside the circle. */
     .motivation-timer-circle {
       width: 170px;
       height: 170px;
+      flex: 0 0 170px;
       border: 7px solid #d8ede7;
       background: #f0faf7;
       border-radius: 50%;
@@ -318,24 +308,33 @@
 
     .motivation-timer-number {
       color: var(--motivation-navy);
-      font-size: 3rem;
+      font-size: 3.15rem;
       font-weight: 850;
+      line-height: 1;
       font-variant-numeric: tabular-nums;
     }
 
+    /* Label sits OUTSIDE the circle. */
     .motivation-timer-label {
+      display: block;
+      width: 100%;
       color: #617b85;
-      font-size: .87rem;
+      font-size: .9rem;
       font-weight: 700;
+      line-height: 1.4;
+      text-align: center;
+      margin: 0 0 4px;
     }
 
     .motivation-timer-progress {
+      display: block;
       width: 100%;
       height: 9px;
+      margin: 4px 0;
       appearance: none;
       border: 0;
-      background: #d9ece8;
       border-radius: 99px;
+      background: #d9ece8;
       overflow: hidden;
     }
 
@@ -351,8 +350,51 @@
       background: var(--motivation-teal);
     }
 
+    #motivationTimerMessage {
+      margin: 4px 0 0;
+      min-height: 24px;
+      line-height: 1.5;
+      color: var(--motivation-navy);
+      text-align: center;
+    }
+
+    .motivation-reset-buttons {
+      display: grid;
+      grid-template-columns: repeat(
+        3, minmax(0, 1fr)
+      );
+      gap: 9px;
+      margin-top: 18px;
+      width: 100%;
+    }
+
+    .motivation-reset-buttons .btn {
+      width: 100%;
+      min-width: 0;
+      min-height: 45px;
+      padding: 10px 6px;
+      font-size: .84rem;
+      line-height: 1.25;
+      white-space: nowrap;
+    }
+
+    .motivation-reset-note {
+      margin: 17px 0 0 !important;
+      font-size: .85rem;
+      line-height: 1.6;
+    }
+
+    /* Other page buttons. */
+    .motivation-button-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
     /* =========================================
-       FEELINGS
+       EMOTIONAL CHECK-IN
        ========================================= */
 
     .motivation-feelings {
@@ -368,7 +410,7 @@
 
     .motivation-feeling-button {
       border: 1px solid var(--motivation-border);
-      background: #fff;
+      background: #ffffff;
       border-radius: 12px;
       padding: 12px 18px;
       font: inherit;
@@ -389,7 +431,7 @@
     }
 
     .motivation-feedback {
-      background: #fff;
+      background: #ffffff;
       border: 1px solid var(--motivation-border);
       border-left: 5px solid var(--motivation-teal);
       padding: 24px;
@@ -407,14 +449,15 @@
 
     .motivation-actions-grid {
       display: grid;
-      grid-template-columns:
-        repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(
+        3, minmax(0, 1fr)
+      );
       gap: 20px;
     }
 
     .motivation-action-card {
       border: 1px solid var(--motivation-border);
-      background: #fff;
+      background: #ffffff;
       border-radius: 17px;
       padding: 25px;
     }
@@ -440,18 +483,18 @@
     }
 
     /* =========================================
-       SUPPORT
+       SUPPORT SECTION
        ========================================= */
 
     .motivation-support-panel {
       padding: 34px;
       border-radius: 20px;
       background: #102b3a;
-      color: #fff;
+      color: #ffffff;
     }
 
     .motivation-support-panel h2 {
-      color: #fff;
+      color: #ffffff;
     }
 
     .motivation-support-panel p {
@@ -461,7 +504,7 @@
 
     .motivation-support-panel .btn.outline {
       border-color: #9ddfd2;
-      color: #fff;
+      color: #ffffff;
     }
 
     .motivation-support-panel .btn.outline:hover {
@@ -475,7 +518,7 @@
     }
 
     /* =========================================
-       RESPONSIVE
+       TABLETS
        ========================================= */
 
     @media (max-width: 800px) {
@@ -484,17 +527,32 @@
       }
 
       .motivation-actions-grid {
-        grid-template-columns: repeat(2, minmax(0,1fr));
+        grid-template-columns: repeat(
+          2, minmax(0, 1fr)
+        );
       }
     }
 
+    /* =========================================
+       SMARTPHONES — SAMSUNG A56 FIX
+       ========================================= */
+
     @media (max-width: 540px) {
       .motivation-hero {
-        padding: 55px 0;
+        padding: 50px 0;
+      }
+
+      .motivation-feature-grid {
+        gap: 18px;
       }
 
       .motivation-feature-card {
-        padding: 22px;
+        padding: 20px;
+        border-radius: 17px;
+      }
+
+      .motivation-feature-card h3 {
+        margin-bottom: 9px;
       }
 
       .billboard-frame {
@@ -502,10 +560,7 @@
         min-height: 270px;
       }
 
-      .billboard-controls {
-        justify-content: center;
-      }
-
+      .billboard-controls,
       .billboard-bottom-actions {
         justify-content: center;
       }
@@ -516,6 +571,45 @@
         text-align: center;
       }
 
+      .motivation-reset-description {
+        margin-bottom: 12px;
+      }
+
+      .motivation-timer {
+        gap: 9px;
+        padding: 4px 0;
+      }
+
+      .motivation-timer-circle {
+        width: 145px;
+        height: 145px;
+        flex-basis: 145px;
+        border-width: 6px;
+      }
+
+      .motivation-timer-number {
+        font-size: 3rem;
+      }
+
+      .motivation-timer-label {
+        font-size: .87rem;
+      }
+
+      .motivation-reset-buttons {
+        gap: 8px;
+        margin-top: 15px;
+      }
+
+      .motivation-reset-buttons .btn {
+        font-size: .78rem;
+        padding: 10px 5px;
+        min-height: 44px;
+      }
+
+      .motivation-reset-note {
+        margin-top: 14px !important;
+      }
+
       .motivation-actions-grid {
         grid-template-columns: 1fr;
       }
@@ -524,13 +618,19 @@
         padding: 25px;
       }
 
-      .motivation-timer-circle {
-        width: 150px;
-        height: 150px;
-      }
-
       .motivation-feeling-button {
         flex: 1 1 auto;
+      }
+    }
+
+    @media (max-width: 350px) {
+      .motivation-reset-buttons {
+        gap: 5px;
+      }
+
+      .motivation-reset-buttons .btn {
+        padding: 9px 3px;
+        font-size: .71rem;
       }
     }
 
@@ -544,1265 +644,1232 @@
 
 <body class="motivation-page">
 
-  <a class="skip" href="#main">
-    Skip to content
-  </a>
+<a class="skip" href="#main">
+  Skip to content
+</a>
 
-  <!-- =========================================
-       NAVIGATION
-       ========================================= -->
+<!-- =========================================
+     MAIN NAVIGATION
+     ========================================= -->
 
-  <header>
-    <div class="container navrow">
+<header>
+  <div class="container navrow">
 
-      <a href="index.html" class="logo">
-        SAVA<span>.COM</span>
+    <a class="logo" href="index.html">
+      SAVA<span>.COM</span>
+    </a>
+
+    <button
+      type="button"
+      class="menu"
+      id="menuBtn"
+      aria-controls="navlinks"
+      aria-expanded="false">
+      ☰ Menu
+    </button>
+
+    <nav
+      class="navlinks"
+      id="navlinks"
+      aria-label="Main navigation">
+
+      <a href="index.html">Home</a>
+      <a href="awareness.html">Awareness</a>
+      <a href="guides.html">Guides</a>
+      <a href="tracker.html">Tracker</a>
+      <a href="quiz.html">Quiz</a>
+
+      <a href="motivation.html"
+         aria-current="page">
+        Motivation
       </a>
 
-      <button
-        class="menu"
-        id="menuBtn"
-        type="button"
-        aria-controls="navlinks"
-        aria-expanded="false">
-        ☰ Menu
-      </button>
+      <a href="articles.html">Articles</a>
+      <a href="support.html">Support</a>
+      <a href="about.html">About</a>
 
-      <nav
-        class="navlinks"
-        id="navlinks"
-        aria-label="Main navigation">
+    </nav>
+  </div>
+</header>
 
-        <a href="index.html">Home</a>
-        <a href="awareness.html">Awareness</a>
-        <a href="guides.html">Guides</a>
-        <a href="tracker.html">Tracker</a>
-        <a href="quiz.html">Quiz</a>
+<main id="main">
 
-        <a href="motivation.html"
-           aria-current="page">
-          Motivation
-        </a>
+  <!-- =========================================
+       HERO
+       ========================================= -->
 
-        <a href="articles.html">Articles</a>
-        <a href="support.html">Support</a>
-        <a href="about.html">About</a>
-      </nav>
+  <section class="motivation-hero">
+    <div class="container">
+
+      <span class="tag">
+        Your Journey Matters
+      </span>
+
+      <h1>
+        Every Small Step
+        <span class="motivation-hero-accent">
+          Counts.
+        </span>
+      </h1>
+
+      <p>
+        Change is not always easy, but you
+        don't have to make every decision
+        perfectly.
+
+        Find encouragement, take a moment
+        for yourself, and focus on one
+        healthier choice at a time.
+      </p>
 
     </div>
-  </header>
+  </section>
 
-  <main id="main">
+  <!-- =========================================
+       MOTIVATION BILLBOARD AND RESET
+       ========================================= -->
 
-    <!-- =========================================
-         HERO
-         ========================================= -->
+  <section id="motivation" class="soft">
+    <div class="container">
 
-    <section class="motivation-hero">
-      <div class="container">
-
+      <div class="motivation-section-heading">
         <span class="tag">
-          Your Journey Matters
+          Encouragement &amp; Self-Care
         </span>
 
-        <h1>
-          Every Small Step
-          <span class="motivation-hero-accent">
-            Counts.
-          </span>
-        </h1>
+        <h2>
+          Take a Moment for Yourself
+        </h2>
 
         <p>
-          Change is not always easy, but you
-          don't have to make every decision
-          perfectly.
-
-          Find encouragement, take a moment
-          for yourself, and focus on one
-          healthier choice at a time.
+          Explore motivational messages
+          and images selected by SAVA.COM.
         </p>
-
       </div>
-    </section>
 
-    <!-- =========================================
-         MOTIVATION BILLBOARD AND RESET
-         ========================================= -->
+      <div class="motivation-feature-grid">
 
-    <section id="motivation" class="soft">
+        <!-- AUTOMATIC BILLBOARD -->
+        <article
+          class="motivation-feature-card motivation-billboard">
 
-      <div class="container">
-
-        <div class="motivation-section-heading">
-          <span class="tag">
-            Encouragement &amp; Self-Care
+          <span class="motivation-card-label">
+            Motivation Billboard
           </span>
 
-          <h2>
-            Take a Moment for Yourself
-          </h2>
+          <h3>
+            A Reminder for Today
+          </h3>
 
-          <p>
-            Explore motivational messages
-            and images selected by SAVA.COM.
-          </p>
-        </div>
-
-        <div class="motivation-feature-grid">
-
-          <!-- AUTOMATIC BILLBOARD -->
-          <article
-            class="motivation-feature-card motivation-billboard">
-
-            <span class="motivation-card-label">
-              Motivation Billboard
-            </span>
-
-            <h3>
-              A Reminder for Today
-            </h3>
+          <div
+            class="billboard-frame"
+            aria-label="Motivational slideshow">
 
             <div
-              class="billboard-frame"
-              aria-label="Motivational slideshow">
-
-              <div
-                id="billboardSlide"
-                class="billboard-slide">
-
-                <span
-                  id="billboardType"
-                  class="billboard-tag">
-                  DAILY ENCOURAGEMENT
-                </span>
-
-                <h4
-                  id="billboardTitle"
-                  class="billboard-title">
-                  Every Small Step Counts
-                </h4>
-
-                <img
-                  id="billboardImage"
-                  class="billboard-image hidden"
-                  alt="">
-
-                <p
-                  id="billboardText"
-                  class="billboard-text">
-                  One healthy choice today can
-                  make tomorrow easier.
-                </p>
-
-              </div>
-            </div>
-
-            <p
-              id="billboardStatus"
-              class="billboard-status"
-              role="status">
-              Loading published motivations...
-            </p>
-
-            <div class="billboard-controls">
-
-              <button
-                type="button"
-                class="btn outline small"
-                id="billboardPrevious"
-                disabled>
-                ← Previous
-              </button>
-
-              <div
-                id="billboardDots"
-                class="billboard-dots"
-                role="group"
-                aria-label="Choose motivation slide">
-              </div>
-
-              <button
-                type="button"
-                class="btn outline small"
-                id="billboardNext"
-                disabled>
-                Next →
-              </button>
-
-            </div>
-
-            <div class="billboard-bottom-actions">
-
-              <button
-                type="button"
-                class="btn primary small"
-                id="billboardPlayPause"
-                disabled>
-                Pause
-              </button>
-
-              <button
-                type="button"
-                class="btn outline small"
-                id="billboardCopy">
-                Copy Message
-              </button>
+              id="billboardSlide"
+              class="billboard-slide">
 
               <span
-                id="billboardCount"
-                class="billboard-count">
-                0 / 0
+                id="billboardType"
+                class="billboard-tag">
+                DAILY ENCOURAGEMENT
               </span>
-            </div>
 
-            <div
-              class="billboard-progress"
-              aria-hidden="true">
-              <div
-                id="billboardProgressFill"
-                class="billboard-progress-fill">
-              </div>
-            </div>
+              <h4
+                id="billboardTitle"
+                class="billboard-title">
+                Every Small Step Counts
+              </h4>
 
-          </article>
-
-          <!-- 60-SECOND RESET -->
-          <article class="motivation-feature-card">
-
-            <span class="motivation-card-label">
-              Mindful Moment
-            </span>
-
-            <h3>
-              Try a 60-Second Reset
-            </h3>
-
-            <p>
-              When a difficult moment or
-              craving appears, take a short
-              pause. Breathe comfortably,
-              notice your surroundings,
-              and consider your next action.
-            </p>
-
-            <div class="motivation-timer">
-
-              <div class="motivation-timer-circle">
-                <div>
-                  <div
-                    class="motivation-timer-number"
-                    id="motivationTimer">
-                    60
-                  </div>
-
-                  <div class="motivation-timer-label">
-                    Seconds Remaining
-                  </div>
-                </div>
-              </div>
-
-              <progress
-                id="motivationTimerProgress"
-                class="motivation-timer-progress"
-                max="60"
-                value="0"
-                aria-label="Reset timer progress">
-              </progress>
+              <img
+                id="billboardImage"
+                class="billboard-image hidden"
+                alt="">
 
               <p
-                id="motivationTimerMessage"
-                role="status"
-                aria-live="polite">
-                Ready when you are.
+                id="billboardText"
+                class="billboard-text">
+                One healthy choice today can
+                make tomorrow easier.
               </p>
 
             </div>
+          </div>
 
-            <div class="motivation-button-row">
+          <p
+            id="billboardStatus"
+            class="billboard-status"
+            role="status">
+            Loading published motivations...
+          </p>
 
-              <button
-                type="button"
-                class="btn primary"
-                id="motivationStartTimer">
-                Start Reset
-              </button>
+          <div class="billboard-controls">
+            <button
+              type="button"
+              class="btn outline small"
+              id="billboardPrevious"
+              disabled>
+              ← Previous
+            </button>
 
-              <button
-                type="button"
-                class="btn outline"
-                id="motivationPauseTimer"
-                disabled>
-                Pause
-              </button>
-
-              <button
-                type="button"
-                class="btn outline"
-                id="motivationResetTimer">
-                Restart
-              </button>
-
+            <div
+              id="billboardDots"
+              class="billboard-dots"
+              role="group"
+              aria-label="Choose motivation slide">
             </div>
 
-            <p class="muted tiny"
-               style="margin-top:16px;">
-              This is a relaxation exercise,
-              not medical treatment.
-              Breathe naturally and stop if
-              you feel uncomfortable.
-            </p>
+            <button
+              type="button"
+              class="btn outline small"
+              id="billboardNext"
+              disabled>
+              Next →
+            </button>
+          </div>
 
-          </article>
+          <div class="billboard-bottom-actions">
+            <button
+              type="button"
+              class="btn primary small"
+              id="billboardPlayPause"
+              disabled>
+              Pause
+            </button>
 
-        </div>
-      </div>
-    </section>
+            <button
+              type="button"
+              class="btn outline small"
+              id="billboardCopy">
+              Copy Message
+            </button>
 
-    <!-- =========================================
-         EMOTIONAL CHECK-IN
-         ========================================= -->
+            <span
+              id="billboardCount"
+              class="billboard-count">
+              0 / 0
+            </span>
+          </div>
 
-    <section class="motivation-feelings">
-      <div class="container">
+          <div
+            class="billboard-progress"
+            aria-hidden="true">
+            <div
+              id="billboardProgressFill"
+              class="billboard-progress-fill">
+            </div>
+          </div>
 
-        <div class="motivation-section-heading">
-          <span class="tag">Emotional Check-In</span>
+        </article>
 
-          <h2>
-            How Are You Feeling Today?
-          </h2>
+        <!-- IMPROVED 60-SECOND RESET -->
+        <article
+          class="motivation-feature-card motivation-reset-card">
 
-          <p>
-            Select the feeling that best
-            describes your current moment.
-            You'll receive a supportive
-            suggestion to consider.
-          </p>
-        </div>
-
-        <div
-          class="motivation-feeling-options"
-          role="group"
-          aria-label="Choose how you feel">
-
-          <button type="button"
-                  class="motivation-feeling-button"
-                  data-feeling="motivated"
-                  aria-pressed="false">
-            😊 Motivated
-          </button>
-
-          <button type="button"
-                  class="motivation-feeling-button"
-                  data-feeling="stressed"
-                  aria-pressed="false">
-            😟 Stressed
-          </button>
-
-          <button type="button"
-                  class="motivation-feeling-button"
-                  data-feeling="craving"
-                  aria-pressed="false">
-            🌊 Experiencing a Craving
-          </button>
-
-          <button type="button"
-                  class="motivation-feeling-button"
-                  data-feeling="discouraged"
-                  aria-pressed="false">
-            😔 Discouraged
-          </button>
-
-          <button type="button"
-                  class="motivation-feeling-button"
-                  data-feeling="hopeful"
-                  aria-pressed="false">
-            🌱 Hopeful
-          </button>
-
-        </div>
-
-        <div
-          class="motivation-feedback"
-          id="motivationFeelingResult"
-          aria-live="polite">
-
-          <h3>Your Feelings Matter</h3>
-
-          <p>
-            There is no right or wrong answer.
-            Choose how you feel to receive
-            encouragement.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =========================================
-         HEALTHY ACTIONS
-         ========================================= -->
-
-    <section>
-      <div class="container">
-
-        <div class="motivation-section-heading">
-          <span class="tag">
-            Small Steps, Real Progress
+          <span class="motivation-card-label">
+            Mindful Moment
           </span>
 
-          <h2>
-            Healthy Actions You Can Try
-          </h2>
+          <h3>
+            Try a 60-Second Reset
+          </h3>
 
-          <p>
-            Small positive actions can support
-            your well-being as you work toward
-            healthier habits.
-          </p>
-        </div>
-
-        <div class="motivation-actions-grid">
-
-          <article class="motivation-action-card">
-            <div class="motivation-action-icon">💧</div>
-            <h3>Drink Water</h3>
-            <p>
-              Have a glass of water and give
-              yourself a moment to refocus.
-            </p>
-          </article>
-
-          <article class="motivation-action-card">
-            <div class="motivation-action-icon">🚶</div>
-            <h3>Move Your Body</h3>
-            <p>
-              Try a short walk or gentle
-              stretching, if it's safe
-              and comfortable for you.
-            </p>
-          </article>
-
-          <article class="motivation-action-card">
-            <div class="motivation-action-icon">💬</div>
-            <h3>Talk to Someone</h3>
-            <p>
-              Reach out to a trusted friend,
-              family member, counselor,
-              or healthcare professional.
-            </p>
-          </article>
-
-          <article class="motivation-action-card">
-            <div class="motivation-action-icon">📝</div>
-            <h3>Write It Down</h3>
-            <p>
-              Notice what you're feeling
-              and identify one positive
-              action you can take next.
-            </p>
-          </article>
-
-          <article class="motivation-action-card">
-            <div class="motivation-action-icon">🎨</div>
-            <h3>Enjoy a Hobby</h3>
-            <p>
-              Spend a little time on an activity
-              that helps you feel engaged
-              and supported.
-            </p>
-          </article>
-
-          <article class="motivation-action-card">
-            <div class="motivation-action-icon">🎯</div>
-            <h3>Focus on One Goal</h3>
-            <p>
-              Choose one manageable step
-              instead of worrying about
-              everything at once.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================
-         SUPPORT
-         ========================================= -->
-
-    <section>
-      <div class="container">
-
-        <div class="motivation-support-panel">
-
-          <span
-            class="motivation-card-label"
-            style="color:#83e2d0;">
-            Support Matters
-          </span>
-
-          <h2>
-            You Don't Have to Do It Alone
-          </h2>
-
-          <p>
-            Positive reminders can be helpful,
-            but professional support may be
-            important when substance use or
-            cravings become difficult to manage.
+          <p class="motivation-reset-description">
+            When a difficult moment or craving
+            appears, take a short pause.
+            Breathe comfortably, notice your
+            surroundings, and consider your
+            next action.
           </p>
 
-          <p>
-            If you drink heavily or regularly
-            and may be physically dependent
-            on alcohol, stopping suddenly can
-            cause dangerous withdrawal.
-            Seek medical advice before
-            attempting to quit abruptly.
-          </p>
+          <div class="motivation-timer">
 
-          <div class="motivation-button-row">
+            <!-- ONLY THE NUMBER IS INSIDE -->
+            <div class="motivation-timer-circle">
+              <div
+                class="motivation-timer-number"
+                id="motivationTimer">
+                60
+              </div>
+            </div>
 
-            <a href="guides.html"
-               class="btn primary">
-              Explore Recovery Guides
-            </a>
+            <!-- LABEL NOW OUTSIDE THE CIRCLE -->
+            <div class="motivation-timer-label">
+              Seconds Remaining
+            </div>
 
-            <a href="support.html"
-               class="btn outline">
-              Find Support
-            </a>
+            <progress
+              id="motivationTimerProgress"
+              class="motivation-timer-progress"
+              max="60"
+              value="0"
+              aria-label="Reset timer progress">
+            </progress>
 
-            <a href="tracker.html"
-               class="btn outline">
-              Track Your Progress
-            </a>
+            <p
+              id="motivationTimerMessage"
+              role="status"
+              aria-live="polite">
+              Ready when you are.
+            </p>
 
           </div>
 
-          <p class="motivation-footer-note">
-            This website provides educational
-            encouragement and does not replace
-            individualized healthcare.
+          <!-- THREE EVENLY SIZED BUTTONS -->
+          <div class="motivation-reset-buttons">
+
+            <button
+              type="button"
+              class="btn primary"
+              id="motivationStartTimer">
+              Start Reset
+            </button>
+
+            <button
+              type="button"
+              class="btn outline"
+              id="motivationPauseTimer"
+              disabled>
+              Pause
+            </button>
+
+            <button
+              type="button"
+              class="btn outline"
+              id="motivationResetTimer">
+              Restart
+            </button>
+
+          </div>
+
+          <p class="muted tiny motivation-reset-note">
+            This is a relaxation exercise,
+            not medical treatment.
+            Breathe naturally and stop if
+            you feel uncomfortable.
           </p>
 
-        </div>
-      </div>
-    </section>
+        </article>
 
-  </main>
+      </div>
+    </div>
+  </section>
 
   <!-- =========================================
-       FOOTER
+       EMOTIONAL CHECK-IN
        ========================================= -->
 
-  <footer>
-    <div class="container footerrow">
+  <section class="motivation-feelings">
+    <div class="container">
 
-      <div>
-        <strong>SAVA.COM</strong>
-        — Choose health. Choose hope.
+      <div class="motivation-section-heading">
+        <span class="tag">
+          Emotional Check-In
+        </span>
 
-        <div>
-          © <span id="year"></span>
-          SAVA Student Project
-        </div>
+        <h2>
+          How Are You Feeling Today?
+        </h2>
+
+        <p>
+          Select the feeling that best
+          describes your current moment.
+          You'll receive a supportive
+          suggestion to consider.
+        </p>
       </div>
 
-      <div>
-        <a href="index.html">
-          Back to home ↑
-        </a>
+      <div
+        class="motivation-feeling-options"
+        role="group"
+        aria-label="Choose how you feel">
 
-        <div>
-          Made for awareness and education.
-        </div>
+        <button
+          type="button"
+          class="motivation-feeling-button"
+          data-feeling="motivated"
+          aria-pressed="false">
+          😊 Motivated
+        </button>
+
+        <button
+          type="button"
+          class="motivation-feeling-button"
+          data-feeling="stressed"
+          aria-pressed="false">
+          😟 Stressed
+        </button>
+
+        <button
+          type="button"
+          class="motivation-feeling-button"
+          data-feeling="craving"
+          aria-pressed="false">
+          🌊 Experiencing a Craving
+        </button>
+
+        <button
+          type="button"
+          class="motivation-feeling-button"
+          data-feeling="discouraged"
+          aria-pressed="false">
+          😔 Discouraged
+        </button>
+
+        <button
+          type="button"
+          class="motivation-feeling-button"
+          data-feeling="hopeful"
+          aria-pressed="false">
+          🌱 Hopeful
+        </button>
+
+      </div>
+
+      <div
+        class="motivation-feedback"
+        id="motivationFeelingResult"
+        aria-live="polite">
+
+        <h3>Your Feelings Matter</h3>
+
+        <p>
+          There is no right or wrong answer.
+          Choose how you feel to receive
+          encouragement.
+        </p>
+
       </div>
 
     </div>
-  </footer>
+  </section>
 
   <!-- =========================================
-       PAGE-SPECIFIC JAVASCRIPT
+       HEALTHY ACTIONS
        ========================================= -->
 
-  <script>
-    (() => {
-      "use strict";
+  <section>
+    <div class="container">
 
-      document.addEventListener(
-        "DOMContentLoaded",
-        () => {
+      <div class="motivation-section-heading">
+        <span class="tag">
+          Small Steps, Real Progress
+        </span>
 
-          const $m = id =>
-            document.getElementById(id);
+        <h2>
+          Healthy Actions You Can Try
+        </h2>
 
-          /* ====================================
-             MOTIVATION BILLBOARD
-             ==================================== */
+        <p>
+          Small positive actions can support
+          your well-being as you work toward
+          healthier habits.
+        </p>
+      </div>
 
-          const SLIDE_SECONDS = 6;
-          const SLIDE_DURATION =
-            SLIDE_SECONDS * 1000;
+      <div class="motivation-actions-grid">
 
-          const reducedMotion =
-            window.matchMedia(
-              "(prefers-reduced-motion: reduce)"
-            ).matches;
+        <article class="motivation-action-card">
+          <div class="motivation-action-icon">💧</div>
+          <h3>Drink Water</h3>
+          <p>
+            Have a glass of water and give
+            yourself a moment to refocus.
+          </p>
+        </article>
 
-          const frame = $m("billboardSlide");
-          const title = $m("billboardTitle");
-          const text = $m("billboardText");
-          const image = $m("billboardImage");
-          const type = $m("billboardType");
-          const status = $m("billboardStatus");
-          const dots = $m("billboardDots");
-          const count = $m("billboardCount");
+        <article class="motivation-action-card">
+          <div class="motivation-action-icon">🚶</div>
+          <h3>Move Your Body</h3>
+          <p>
+            Try a short walk or gentle
+            stretching, if it's safe and
+            comfortable for you.
+          </p>
+        </article>
 
-          const previous =
-            $m("billboardPrevious");
+        <article class="motivation-action-card">
+          <div class="motivation-action-icon">💬</div>
+          <h3>Talk to Someone</h3>
+          <p>
+            Reach out to a trusted friend,
+            family member, counselor,
+            or healthcare professional.
+          </p>
+        </article>
 
-          const next =
-            $m("billboardNext");
+        <article class="motivation-action-card">
+          <div class="motivation-action-icon">📝</div>
+          <h3>Write It Down</h3>
+          <p>
+            Notice what you're feeling
+            and identify one positive
+            action you can take next.
+          </p>
+        </article>
 
-          const playPause =
-            $m("billboardPlayPause");
+        <article class="motivation-action-card">
+          <div class="motivation-action-icon">🎨</div>
+          <h3>Enjoy a Hobby</h3>
+          <p>
+            Spend a little time on an activity
+            that helps you feel engaged
+            and supported.
+          </p>
+        </article>
 
-          const copy =
-            $m("billboardCopy");
+        <article class="motivation-action-card">
+          <div class="motivation-action-icon">🎯</div>
+          <h3>Focus on One Goal</h3>
+          <p>
+            Choose one manageable step
+            instead of worrying about
+            everything at once.
+          </p>
+        </article>
 
-          const progress =
-            $m("billboardProgressFill");
+      </div>
 
-          let slides = [];
-          let currentSlide = 0;
+    </div>
+  </section>
 
-          let manuallyPaused = reducedMotion;
-          let autoTimeout = null;
-          let progressInterval = null;
-          let transitionTimeout = null;
+  <!-- =========================================
+       SUPPORT
+       ========================================= -->
 
-          let deadline = 0;
-          let pendingIndex = null;
+  <section>
+    <div class="container">
 
-          function stopRotation() {
-            clearTimeout(autoTimeout);
-            clearInterval(progressInterval);
+      <div class="motivation-support-panel">
+        <span
+          class="motivation-card-label"
+          style="color:#83e2d0;">
+          Support Matters
+        </span>
 
-            autoTimeout = null;
-            progressInterval = null;
-            deadline = 0;
+        <h2>
+          You Don't Have to Do It Alone
+        </h2>
 
-            progress.style.width = "0%";
+        <p>
+          Positive reminders can be helpful,
+          but professional support may be
+          important when substance use or
+          cravings become difficult to manage.
+        </p>
+
+        <p>
+          If you drink heavily or regularly
+          and may be physically dependent on
+          alcohol, stopping suddenly can cause
+          dangerous withdrawal. Seek medical
+          advice before attempting to quit
+          abruptly.
+        </p>
+
+        <div class="motivation-button-row">
+
+          <a href="guides.html" class="btn primary">
+            Explore Recovery Guides
+          </a>
+
+          <a href="support.html" class="btn outline">
+            Find Support
+          </a>
+
+          <a href="tracker.html" class="btn outline">
+            Track Your Progress
+          </a>
+
+        </div>
+
+        <p class="motivation-footer-note">
+          This website provides educational
+          encouragement and does not replace
+          individualized healthcare.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- =========================================
+     FOOTER
+     ========================================= -->
+
+<footer>
+  <div class="container footerrow">
+
+    <div>
+      <strong>SAVA.COM</strong>
+      — Choose health. Choose hope.
+
+      <div>
+        © <span id="year"></span>
+        SAVA Student Project
+      </div>
+    </div>
+
+    <div>
+      <a href="index.html">
+        Back to home ↑
+      </a>
+
+      <div>
+        Made for awareness and education.
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- =========================================
+     PAGE-SPECIFIC JAVASCRIPT
+     ========================================= -->
+
+<script>
+(() => {
+  "use strict";
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+      const $m = id =>
+        document.getElementById(id);
+
+      /* ====================================
+         AUTOMATIC MOTIVATION BILLBOARD
+         ==================================== */
+
+      const SLIDE_DURATION = 6000;
+
+      const reducedMotion =
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+      const frame = $m("billboardSlide");
+      const title = $m("billboardTitle");
+      const text = $m("billboardText");
+      const image = $m("billboardImage");
+      const type = $m("billboardType");
+      const status = $m("billboardStatus");
+      const dots = $m("billboardDots");
+      const count = $m("billboardCount");
+      const previous = $m("billboardPrevious");
+      const next = $m("billboardNext");
+      const playPause = $m("billboardPlayPause");
+      const copy = $m("billboardCopy");
+      const progress = $m("billboardProgressFill");
+
+      let slides = [];
+      let currentSlide = 0;
+      let manuallyPaused = reducedMotion;
+
+      let autoTimeout = null;
+      let progressInterval = null;
+      let transitionTimeout = null;
+      let deadline = 0;
+      let pendingIndex = null;
+
+      function stopRotation() {
+        clearTimeout(autoTimeout);
+        clearInterval(progressInterval);
+
+        autoTimeout = null;
+        progressInterval = null;
+        deadline = 0;
+
+        progress.style.width = "0%";
+      }
+
+      function stopTransition() {
+        clearTimeout(transitionTimeout);
+
+        transitionTimeout = null;
+        pendingIndex = null;
+
+        frame.classList.remove("is-changing");
+      }
+
+      function updatePlayButton() {
+        playPause.disabled = slides.length < 2;
+
+        playPause.textContent =
+          manuallyPaused ? "▶ Play" : "Ⅱ Pause";
+
+        playPause.setAttribute(
+          "aria-label",
+          manuallyPaused
+            ? "Resume automatic slideshow"
+            : "Pause automatic slideshow"
+        );
+      }
+
+      function paintProgress() {
+        if (
+          !deadline ||
+          manuallyPaused ||
+          document.hidden
+        ) {
+          return;
+        }
+
+        const remaining = Math.max(
+          0,
+          deadline - Date.now()
+        );
+
+        const percent =
+          100 * (1 - remaining / SLIDE_DURATION);
+
+        progress.style.width =
+          Math.min(100, Math.max(0, percent)) + "%";
+      }
+
+      function scheduleRotation() {
+        stopRotation();
+        updatePlayButton();
+
+        if (
+          manuallyPaused ||
+          document.hidden ||
+          slides.length < 2
+        ) {
+          return;
+        }
+
+        deadline = Date.now() + SLIDE_DURATION;
+
+        progressInterval =
+          setInterval(paintProgress, 100);
+
+        autoTimeout = setTimeout(
+          () => showSlide(currentSlide + 1),
+          SLIDE_DURATION
+        );
+      }
+
+      function renderSlide(index) {
+        if (!slides.length) return;
+
+        currentSlide =
+          (index + slides.length) % slides.length;
+
+        const item = slides[currentSlide];
+        const isImage =
+          item.content_type === "image";
+
+        title.textContent =
+          item.title || "Motivation";
+
+        type.textContent =
+          isImage
+            ? "IMAGE MOTIVATION"
+            : "DAILY ENCOURAGEMENT";
+
+        image.classList.toggle(
+          "hidden",
+          !isImage
+        );
+
+        text.classList.toggle(
+          "hidden",
+          isImage
+        );
+
+        if (isImage) {
+          image.src = item.image_url;
+
+          image.alt =
+            item.title || "Motivational image";
+
+          text.textContent = "";
+          copy.disabled = true;
+        } else {
+          image.removeAttribute("src");
+          image.alt = "";
+
+          text.textContent = item.body || "";
+          copy.disabled = false;
+        }
+
+        count.textContent =
+          (currentSlide + 1) +
+          " / " + slides.length;
+
+        [...dots.children].forEach(
+          (dot, dotIndex) => {
+            dot.setAttribute(
+              "aria-current",
+              String(dotIndex === currentSlide)
+            );
           }
+        );
 
-          function stopTransition() {
-            clearTimeout(transitionTimeout);
-            transitionTimeout = null;
-            pendingIndex = null;
-            frame.classList.remove("is-changing");
-          }
+        previous.disabled = slides.length < 2;
+        next.disabled = slides.length < 2;
+      }
 
-          function updatePlayButton() {
-            const canRotate = slides.length > 1;
+      function showSlide(index) {
+        if (!slides.length) return;
 
-            playPause.disabled = !canRotate;
+        stopRotation();
+        stopTransition();
 
-            playPause.textContent =
-              manuallyPaused
-                ? "▶ Play"
-                : "Ⅱ Pause";
+        const target =
+          (index + slides.length) % slides.length;
 
-            playPause.setAttribute(
-              "aria-label",
-              manuallyPaused
-                ? "Resume automatic slideshow"
-                : "Pause automatic slideshow"
+        if (
+          target === currentSlide ||
+          reducedMotion
+        ) {
+          renderSlide(target);
+          scheduleRotation();
+          return;
+        }
+
+        pendingIndex = target;
+        frame.classList.add("is-changing");
+
+        transitionTimeout = setTimeout(() => {
+          const selected = pendingIndex;
+
+          transitionTimeout = null;
+          pendingIndex = null;
+
+          renderSlide(selected);
+
+          frame.classList.remove("is-changing");
+          scheduleRotation();
+        }, 280);
+      }
+
+      function makeDots() {
+        dots.replaceChildren();
+
+        slides.forEach((item, index) => {
+          const dot =
+            document.createElement("button");
+
+          dot.type = "button";
+          dot.className = "billboard-dot";
+
+          dot.setAttribute(
+            "aria-label",
+            "Show slide " + (index + 1) +
+            ": " + item.title
+          );
+
+          dot.addEventListener(
+            "click",
+            () => showSlide(index)
+          );
+
+          dots.append(dot);
+        });
+      }
+
+      async function loadBillboard() {
+        try {
+          if (
+            typeof window.supabase?.createClient
+              !== "function" ||
+            typeof SAVA_SUPABASE_URL !== "string" ||
+            typeof SAVA_PUBLISHABLE_KEY !== "string"
+          ) {
+            throw new Error(
+              "Supabase configuration is unavailable."
             );
           }
 
-          function paintProgress() {
-            if (
-              !deadline ||
-              manuallyPaused ||
-              document.hidden
-            ) {
-              return;
-            }
-
-            const remaining = Math.max(
-              0,
-              deadline - Date.now()
+          if (
+            typeof initializeDatabase !== "function" ||
+            !initializeDatabase()
+          ) {
+            throw new Error(
+              "Unable to connect to Supabase."
             );
-
-            const percent =
-              100 * (1 - remaining / SLIDE_DURATION);
-
-            progress.style.width =
-              Math.min(100, Math.max(0, percent)) +
-              "%";
           }
 
-          function scheduleRotation() {
-            stopRotation();
-            updatePlayButton();
-
-            if (
-              manuallyPaused ||
-              document.hidden ||
-              slides.length < 2
-            ) {
-              return;
-            }
-
-            deadline =
-              Date.now() + SLIDE_DURATION;
-
-            progressInterval =
-              setInterval(paintProgress, 100);
-
-            autoTimeout = setTimeout(() => {
-              showSlide(currentSlide + 1);
-            }, SLIDE_DURATION);
-          }
-
-          function renderSlide(index) {
-            if (!slides.length) return;
-
-            currentSlide =
-              (index + slides.length) %
-              slides.length;
-
-            const item = slides[currentSlide];
-            const isImage =
-              item.content_type === "image";
-
-            title.textContent =
-              item.title || "Motivation";
-
-            type.textContent =
-              isImage
-                ? "IMAGE MOTIVATION"
-                : "DAILY ENCOURAGEMENT";
-
-            image.classList.toggle(
-              "hidden",
-              !isImage
-            );
-
-            text.classList.toggle(
-              "hidden",
-              isImage
-            );
-
-            if (isImage) {
-              image.src = item.image_url;
-              image.alt = item.title ||
-                "Motivational image";
-
-              text.textContent = "";
-              copy.disabled = true;
-            } else {
-              image.removeAttribute("src");
-              image.alt = "";
-
-              text.textContent =
-                item.body || "";
-
-              copy.disabled = false;
-            }
-
-            count.textContent =
-              (currentSlide + 1) +
-              " / " + slides.length;
-
-            [...dots.children].forEach(
-              (dot, index) => {
-                dot.setAttribute(
-                  "aria-current",
-                  String(index === currentSlide)
-                );
-              }
-            );
-
-            previous.disabled =
-              slides.length < 2;
-
-            next.disabled =
-              slides.length < 2;
-          }
-
-          function showSlide(index) {
-            if (!slides.length) return;
-
-            stopRotation();
-            stopTransition();
-
-            const target =
-              (index + slides.length) %
-              slides.length;
-
-            if (
-              target === currentSlide ||
-              reducedMotion
-            ) {
-              renderSlide(target);
-              scheduleRotation();
-              return;
-            }
-
-            pendingIndex = target;
-
-            frame.classList.add("is-changing");
-
-            transitionTimeout = setTimeout(() => {
-              const selected = pendingIndex;
-
-              transitionTimeout = null;
-              pendingIndex = null;
-
-              renderSlide(selected);
-
-              frame.classList.remove(
-                "is-changing"
-              );
-
-              scheduleRotation();
-            }, 280);
-          }
-
-          function makeDots() {
-            dots.replaceChildren();
-
-            slides.forEach((item, index) => {
-              const dot =
-                document.createElement("button");
-
-              dot.type = "button";
-              dot.className = "billboard-dot";
-
-              dot.setAttribute(
-                "aria-label",
-                "Show slide " + (index + 1) +
-                ": " + item.title
-              );
-
-              dot.addEventListener(
-                "click",
-                () => showSlide(index)
-              );
-
-              dots.append(dot);
-            });
-          }
-
-          async function loadBillboard() {
-            try {
-              if (
-                typeof window.supabase
-                  ?.createClient !== "function" ||
-                typeof SAVA_SUPABASE_URL
-                  !== "string" ||
-                typeof SAVA_PUBLISHABLE_KEY
-                  !== "string"
-              ) {
-                throw new Error(
-                  "Supabase configuration is unavailable."
-                );
-              }
-
-              // Reuse the shared Supabase client.
-              if (
-                typeof initializeDatabase !== "function" ||
-                !initializeDatabase()
-              ) {
-                throw new Error(
-                  "Unable to connect to Supabase."
-                );
-              }
-
-              const { data, error } =
-                await savaDatabase
-                  .from("sava_motivations")
-                  .select(
-                    "id,title,content_type,body,image_url,display_order,created_at"
-                  )
-                  .eq("is_published", true)
-                  .order("display_order", {
-                    ascending: true
-                  })
-                  .order("created_at", {
-                    ascending: true
-                  });
-
-              if (error) throw error;
-
-              slides = (data || []).filter(item => {
-                return item.content_type === "text"
-                  ? Boolean(item.body?.trim())
-                  : item.content_type === "image" &&
-                    Boolean(item.image_url?.trim());
+          const { data, error } =
+            await savaDatabase
+              .from("sava_motivations")
+              .select(
+                "id,title,content_type,body,image_url,display_order,created_at"
+              )
+              .eq("is_published", true)
+              .order("display_order", {
+                ascending: true
+              })
+              .order("created_at", {
+                ascending: true
               });
 
-              if (!slides.length) {
-                status.textContent =
-                  "No published motivations yet. " +
-                  "Check back for new encouragement.";
+          if (error) throw error;
 
-                count.textContent = "0 / 0";
+          slides = (data || []).filter(item => {
+            return item.content_type === "text"
+              ? Boolean(item.body?.trim())
+              : item.content_type === "image" &&
+                Boolean(item.image_url?.trim());
+          });
 
-                copy.disabled = false;
-                updatePlayButton();
-                return;
-              }
+          if (!slides.length) {
+            status.textContent =
+              "No published motivations yet. " +
+              "Check back for new encouragement.";
 
-              currentSlide = 0;
+            count.textContent = "0 / 0";
+            copy.disabled = false;
 
-              makeDots();
-              renderSlide(0);
-
-              status.textContent =
-                "Showing " + slides.length +
-                " published motivation" +
-                (slides.length === 1 ? "." : "s.");
-
-              scheduleRotation();
-
-            } catch (error) {
-              status.textContent =
-                "Unable to load billboard: " +
-                (error?.message ||
-                  "Please try again later.");
-
-              updatePlayButton();
-            }
+            updatePlayButton();
+            return;
           }
 
-          previous.addEventListener(
-            "click",
-            () => {
-              showSlide(currentSlide - 1);
-            }
-          );
+          currentSlide = 0;
+          makeDots();
+          renderSlide(0);
 
-          next.addEventListener(
-            "click",
-            () => {
-              showSlide(currentSlide + 1);
-            }
-          );
+          status.textContent =
+            "Showing " + slides.length +
+            " published motivation" +
+            (slides.length === 1 ? "." : "s.");
 
-          playPause.addEventListener(
-            "click",
-            () => {
-              manuallyPaused = !manuallyPaused;
+          scheduleRotation();
 
-              // A click during a transition cancels
-              // the pending slide change safely.
-              if (transitionTimeout !== null) {
-                stopTransition();
-              }
+        } catch (error) {
+          status.textContent =
+            "Unable to load billboard: " +
+            (error?.message ||
+              "Please try again later.");
 
-              scheduleRotation();
-            }
-          );
+          updatePlayButton();
+        }
+      }
 
-          copy.addEventListener(
-            "click",
-            async () => {
-              const item = slides[currentSlide];
+      previous.addEventListener(
+        "click",
+        () => showSlide(currentSlide - 1)
+      );
 
-              const message =
-                item?.content_type === "text"
-                  ? item.body
-                  : !slides.length
-                    ? text.textContent
-                    : "";
+      next.addEventListener(
+        "click",
+        () => showSlide(currentSlide + 1)
+      );
 
-              if (!message) {
-                status.textContent =
-                  "There is no text message to copy.";
-                return;
-              }
+      playPause.addEventListener(
+        "click",
+        () => {
+          manuallyPaused = !manuallyPaused;
 
-              try {
-                await navigator.clipboard.writeText(
-                  message + " — SAVA.COM"
-                );
-
-                status.textContent =
-                  "Motivational message copied!";
-
-              } catch (error) {
-                status.textContent =
-                  "Automatic copying is unavailable. " +
-                  "Please select and copy the message.";
-              }
-            }
-          );
-
-          document.addEventListener(
-            "visibilitychange",
-            () => {
-              if (document.hidden) {
-                stopRotation();
-              } else {
-                scheduleRotation();
-              }
-            }
-          );
-
-          loadBillboard();
-
-          /* ====================================
-             60-SECOND RESET TIMER
-             ==================================== */
-
-          const timerDisplay =
-            $m("motivationTimer");
-
-          const timerProgress =
-            $m("motivationTimerProgress");
-
-          const timerMessage =
-            $m("motivationTimerMessage");
-
-          const startButton =
-            $m("motivationStartTimer");
-
-          const pauseButton =
-            $m("motivationPauseTimer");
-
-          const resetButton =
-            $m("motivationResetTimer");
-
-          const DURATION = 60;
-
-          let remaining = DURATION;
-          let timerDeadline = null;
-          let timerInterval = null;
-
-          function renderTimer() {
-            timerDisplay.textContent =
-              String(remaining);
-
-            timerProgress.value =
-              DURATION - remaining;
+          if (transitionTimeout !== null) {
+            stopTransition();
           }
 
-          function stopTimerInterval() {
-            if (timerInterval !== null) {
-              clearInterval(timerInterval);
-              timerInterval = null;
-            }
+          scheduleRotation();
+        }
+      );
+
+      copy.addEventListener(
+        "click",
+        async () => {
+          const item = slides[currentSlide];
+
+          const message =
+            item?.content_type === "text"
+              ? item.body
+              : !slides.length
+                ? text.textContent
+                : "";
+
+          if (!message) {
+            status.textContent =
+              "There is no text message to copy.";
+            return;
           }
 
-          function finishTimer() {
-            stopTimerInterval();
-
-            remaining = 0;
-            timerDeadline = null;
-
-            renderTimer();
-
-            startButton.disabled = false;
-            startButton.textContent =
-              "Start Again";
-
-            pauseButton.disabled = true;
-
-            timerMessage.textContent =
-              "Reset complete. Notice how " +
-              "you feel and choose your next step.";
-          }
-
-          function updateTimer() {
-            if (timerDeadline === null) return;
-
-            remaining = Math.max(
-              0,
-              Math.ceil(
-                (timerDeadline - Date.now()) / 1000
-              )
+          try {
+            await navigator.clipboard.writeText(
+              message + " — SAVA.COM"
             );
 
-            renderTimer();
+            status.textContent =
+              "Motivational message copied!";
 
-            if (remaining === 0) {
-              finishTimer();
-            }
+          } catch (error) {
+            status.textContent =
+              "Automatic copying is unavailable. " +
+              "Please select and copy the message.";
+          }
+        }
+      );
+
+      document.addEventListener(
+        "visibilitychange",
+        () => {
+          if (document.hidden) {
+            stopRotation();
+          } else {
+            scheduleRotation();
+          }
+        }
+      );
+
+      loadBillboard();
+
+      /* ====================================
+         60-SECOND RESET TIMER
+         ==================================== */
+
+      const timerDisplay =
+        $m("motivationTimer");
+
+      const timerProgress =
+        $m("motivationTimerProgress");
+
+      const timerMessage =
+        $m("motivationTimerMessage");
+
+      const startButton =
+        $m("motivationStartTimer");
+
+      const pauseButton =
+        $m("motivationPauseTimer");
+
+      const resetButton =
+        $m("motivationResetTimer");
+
+      const DURATION = 60;
+
+      let remaining = DURATION;
+      let timerDeadline = null;
+      let timerInterval = null;
+
+      function renderTimer() {
+        timerDisplay.textContent =
+          String(remaining);
+
+        timerProgress.value =
+          DURATION - remaining;
+      }
+
+      function stopTimerInterval() {
+        if (timerInterval !== null) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+        }
+      }
+
+      function finishTimer() {
+        stopTimerInterval();
+
+        remaining = 0;
+        timerDeadline = null;
+
+        renderTimer();
+
+        startButton.disabled = false;
+        startButton.textContent = "Start Again";
+
+        pauseButton.disabled = true;
+
+        timerMessage.textContent =
+          "Reset complete. Notice how " +
+          "you feel and choose your next step.";
+      }
+
+      function updateTimer() {
+        if (timerDeadline === null) return;
+
+        remaining = Math.max(
+          0,
+          Math.ceil(
+            (timerDeadline - Date.now()) / 1000
+          )
+        );
+
+        renderTimer();
+
+        if (remaining === 0) {
+          finishTimer();
+        }
+      }
+
+      startButton.addEventListener(
+        "click",
+        () => {
+          if (remaining === 0) {
+            remaining = DURATION;
           }
 
-          startButton.addEventListener(
-            "click",
-            () => {
-              if (remaining === 0) {
-                remaining = DURATION;
-              }
+          if (timerInterval !== null) return;
 
-              if (timerInterval !== null) return;
+          timerDeadline =
+            Date.now() + remaining * 1000;
 
-              timerDeadline =
-                Date.now() + remaining * 1000;
+          timerInterval =
+            setInterval(updateTimer, 200);
 
-              timerInterval =
-                setInterval(updateTimer, 200);
+          startButton.disabled = true;
+          pauseButton.disabled = false;
 
-              startButton.disabled = true;
-              pauseButton.disabled = false;
+          startButton.textContent = "Continue";
 
-              startButton.textContent = "Continue";
+          timerMessage.textContent =
+            "Breathe comfortably. " +
+            "Notice your surroundings.";
 
-              timerMessage.textContent =
-                "Breathe comfortably. " +
-                "Notice your surroundings.";
+          updateTimer();
+        }
+      );
 
-              updateTimer();
-            }
-          );
+      pauseButton.addEventListener(
+        "click",
+        () => {
+          updateTimer();
 
-          pauseButton.addEventListener(
-            "click",
-            () => {
-              updateTimer();
+          if (timerInterval === null) return;
 
-              if (timerInterval === null) return;
+          stopTimerInterval();
+          timerDeadline = null;
 
-              stopTimerInterval();
-              timerDeadline = null;
+          startButton.disabled = false;
+          pauseButton.disabled = true;
 
-              startButton.disabled = false;
-              pauseButton.disabled = true;
+          timerMessage.textContent =
+            "Paused. Resume whenever " +
+            "you feel ready.";
+        }
+      );
 
-              timerMessage.textContent =
-                "Paused. Resume whenever " +
-                "you feel ready.";
-            }
-          );
+      resetButton.addEventListener(
+        "click",
+        () => {
+          stopTimerInterval();
 
-          resetButton.addEventListener(
-            "click",
-            () => {
-              stopTimerInterval();
-
-              timerDeadline = null;
-              remaining = DURATION;
-
-              renderTimer();
-
-              startButton.disabled = false;
-              startButton.textContent = "Start Reset";
-
-              pauseButton.disabled = true;
-
-              timerMessage.textContent =
-                "Ready when you are.";
-            }
-          );
+          timerDeadline = null;
+          remaining = DURATION;
 
           renderTimer();
 
-          /* ====================================
-             EMOTIONAL CHECK-IN
-             ==================================== */
+          startButton.disabled = false;
+          startButton.textContent = "Start Reset";
 
-          const feelings = {
-            motivated: {
-              title: "Keep Building Momentum",
-              message:
-                "It's encouraging to feel ready " +
-                "for positive change. Choose one " +
-                "realistic goal and acknowledge " +
-                "the effort you put into it."
-            },
+          pauseButton.disabled = true;
 
-            stressed: {
-              title: "Give Yourself Some Space",
-              message:
-                "Stress can make change harder. " +
-                "Try a comfortable pause, " +
-                "a short walk, or a conversation " +
-                "with someone you trust."
-            },
-
-            craving: {
-              title: "Focus on Your Next Safe Step",
-              message:
-                "Cravings can feel strong. " +
-                "Consider stepping away from " +
-                "triggers and contacting someone " +
-                "supportive. If you are worried " +
-                "about withdrawal or feel unwell, " +
-                "seek medical advice."
-            },
-
-            discouraged: {
-              title: "Progress Doesn't Require Perfection",
-              message:
-                "A difficult day does not erase " +
-                "your efforts. Take one manageable " +
-                "step and consider reaching out " +
-                "for support."
-            },
-
-            hopeful: {
-              title: "Hold On to What Matters",
-              message:
-                "Hope can help you move forward. " +
-                "Think about what matters most " +
-                "to you and one healthy action " +
-                "you can take today."
-            }
-          };
-
-          const feelingResult =
-            $m("motivationFeelingResult");
-
-          document.querySelectorAll(
-            "[data-feeling]"
-          ).forEach(button => {
-            button.addEventListener(
-              "click",
-              () => {
-                const selected =
-                  feelings[button.dataset.feeling];
-
-                if (!selected) return;
-
-                document.querySelectorAll(
-                  "[data-feeling]"
-                ).forEach(other => {
-                  other.setAttribute(
-                    "aria-pressed",
-                    String(other === button)
-                  );
-                });
-
-                const heading =
-                  document.createElement("h3");
-
-                heading.textContent =
-                  selected.title;
-
-                const paragraph =
-                  document.createElement("p");
-
-                paragraph.textContent =
-                  selected.message;
-
-                feelingResult.replaceChildren(
-                  heading,
-                  paragraph
-                );
-              }
-            );
-          });
-
+          timerMessage.textContent =
+            "Ready when you are.";
         }
       );
-    })();
-  </script>
+
+      renderTimer();
+
+      /* ====================================
+         EMOTIONAL CHECK-IN
+         ==================================== */
+
+      const feelings = {
+        motivated: {
+          title: "Keep Building Momentum",
+          message:
+            "It's encouraging to feel ready " +
+            "for positive change. Choose one " +
+            "realistic goal and acknowledge " +
+            "the effort you put into it."
+        },
+
+        stressed: {
+          title: "Give Yourself Some Space",
+          message:
+            "Stress can make change harder. " +
+            "Try a comfortable pause, " +
+            "a short walk, or a conversation " +
+            "with someone you trust."
+        },
+
+        craving: {
+          title: "Focus on Your Next Safe Step",
+          message:
+            "Cravings can feel strong. " +
+            "Consider stepping away from " +
+            "triggers and contacting someone " +
+            "supportive. If you are worried " +
+            "about withdrawal or feel unwell, " +
+            "seek medical advice."
+        },
+
+        discouraged: {
+          title: "Progress Doesn't Require Perfection",
+          message:
+            "A difficult day does not erase " +
+            "your efforts. Take one manageable " +
+            "step and consider reaching out " +
+            "for support."
+        },
+
+        hopeful: {
+          title: "Hold On to What Matters",
+          message:
+            "Hope can help you move forward. " +
+            "Think about what matters most " +
+            "to you and one healthy action " +
+            "you can take today."
+        }
+      };
+
+      const feelingResult =
+        $m("motivationFeelingResult");
+
+      document.querySelectorAll(
+        "[data-feeling]"
+      ).forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            const selected =
+              feelings[button.dataset.feeling];
+
+            if (!selected) return;
+
+            document.querySelectorAll(
+              "[data-feeling]"
+            ).forEach(other => {
+              other.setAttribute(
+                "aria-pressed",
+                String(other === button)
+              );
+            });
+
+            const heading =
+              document.createElement("h3");
+
+            heading.textContent =
+              selected.title;
+
+            const paragraph =
+              document.createElement("p");
+
+            paragraph.textContent =
+              selected.message;
+
+            feelingResult.replaceChildren(
+              heading,
+              paragraph
+            );
+          }
+        );
+      });
+
+    }
+  );
+})();
+</script>
 
 </body>
 </html>
